@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ANIMA — Haute Joaillerie</title>
+  <meta name="description" content="ANIMA — Haute Joaillerie for the Healer's Hand. Precision, Anatomy, Permanence.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-loading">
+  <!-- Minimal Ambient Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-mark">
+      <span class="preloader-brand">ANIMA</span>
+      <span class="preloader-sub">HAUTE JOAILLERIE</span>
+      <div class="preloader-progress">
+        <div class="preloader-bar" id="preloaderBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottega Veneta Signature Floating Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-col header-col-left">
+      <button class="nav-text-btn" id="menuToggle" aria-label="Open Navigation">MENU</button>
+    </div>
+
+    <div class="header-col header-col-center">
+      <a href="javascript:void(0)" class="brand-logo" id="brandLogo" aria-label="ANIMA Home">ANIMA</a>
+    </div>
+
+    <div class="header-col header-col-right">
+      <button class="nav-text-btn" id="headerInquireBtn" aria-label="Commission Allocation">COMMISSION</button>
+    </div>
+  </header>
+
+  <!-- Side Layer Navigation Dots (5 Layers) -->
+  <nav class="layer-pagination" id="layerPagination" aria-label="Slide Deck Navigation">
+    <button class="page-dot active" data-slide="0" aria-label="Slide 1"><span>01</span></button>
+    <button class="page-dot" data-slide="1" aria-label="Slide 2"><span>02</span></button>
+    <button class="page-dot" data-slide="2" aria-label="Slide 3"><span>03</span></button>
+    <button class="page-dot" data-slide="3" aria-label="Slide 4"><span>04</span></button>
+    <button class="page-dot" data-slide="4" aria-label="Slide 5"><span>05</span></button>
+  </nav>
+
+  <!-- Navigation Curtain / Index Overlay -->
+  <aside class="nav-overlay" id="navOverlay">
+    <div class="nav-overlay-backdrop" id="navBackdrop"></div>
+    <div class="nav-overlay-panel">
+      <div class="nav-overlay-header">
+        <span class="nav-panel-title">CATALOGUE RAISONNÉ</span>
+        <button class="nav-close-btn" id="navCloseBtn" aria-label="Close Index">✕</button>
+      </div>
+
+      <div class="nav-overlay-body">
+        <ul class="nav-frame-list">
+          <li class="nav-item active" data-slide-target="0">
+            <a href="javascript:void(0)">
+              <span class="nav-idx">01</span>
+              <span class="nav-title">THE THRESHOLD</span>
+              <span class="nav-subtitle">Peer Recognition & Subtle Bespoke Ring</span>
+            </a>
+          </li>
+          <li class="nav-item" data-slide-target="1">
+            <a href="javascript:void(0)">
+              <span class="nav-idx">02</span>
+              <span class="nav-title">THE ARTIFACT</span>
+              <span class="nav-subtitle">Ref. AN-01 // The Phalanx Ring</span>
+            </a>
+          </li>
+          <li class="nav-item" data-slide-target="2">
+            <a href="javascript:void(0)">
+              <span class="nav-idx">03</span>
+              <span class="nav-title">FINE JEWELRY METIER</span>
+              <span class="nav-subtitle">Ref. AN-04 // Micro-Pavé Craft Video</span>
+            </a>
+          </li>
+          <li class="nav-item" data-slide-target="3">
+            <a href="javascript:void(0)">
+              <span class="nav-idx">04</span>
+              <span class="nav-title">BESPOKE DISPLAY FEATURE</span>
+              <span class="nav-subtitle">Ref. AN-08 // The Carpal Cadence</span>
+            </a>
+          </li>
+          <li class="nav-item" data-slide-target="4">
+            <a href="javascript:void(0)">
+              <span class="nav-idx">05</span>
+              <span class="nav-title">BESPOKE COMMISSIONS</span>
+              <span class="nav-subtitle">Private Allocation & Anatomical Fitting</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav-philosophy-brief">
+          <div class="nav-phil-col">
+            <span class="phil-greek">ANIMA</span>
+            <p>From Latin: representing the physical life force, the body, and the tangible weight of existence. Precision, anatomy, and permanence.</p>
+          </div>
+          <div class="nav-phil-col">
+            <span class="phil-greek">PERMANENCE</span>
+            <p>Conceived for the hands that restore life—subtle, unyielding, and anatomically calibrated to clinical practice.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-overlay-footer">
+        <span class="nav-contact-link" id="openCommissionFromNav">REQUEST PRIVATE COMMISSION</span>
+        <span class="nav-coords">ZURICH • GENEVA • NEW YORK • TOKYO</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Interactive Detail Dossier Drawer -->
+  <aside class="dossier-drawer" id="dossierDrawer" aria-hidden="true">
+    <div class="dossier-backdrop" id="dossierBackdrop"></div>
+    <div class="dossier-content">
+      <div class="dossier-header">
+        <div class="dossier-ref-tag" id="dossierRef">REF. AN-01</div>
+        <button class="dossier-close" id="dossierClose" aria-label="Close Dossier">✕</button>
+      </div>
+
+      <div class="dossier-scroll">
+        <h2 class="dossier-title" id="dossierTitle">THE PHALANX RING</h2>
+        <span class="dossier-category" id="dossierCategory">ANIMA // ANATOMICAL PERMANENCE</span>
+
+        <div class="dossier-media-container">
+          <img src="" alt="Artifact Dossier Detail" class="dossier-img" id="dossierImg">
+          <div class="dossier-crosshairs">
+            <span class="crosshair-axis x-axis"></span>
+            <span class="crosshair-axis y-axis"></span>
+            <span class="axis-coord" id="dossierCoord">AXIS: 14.82mm // DORSAL ARC</span>
+          </div>
+        </div>
+
+        <div class="dossier-specs-grid">
+          <div class="spec-block">
+            <span class="spec-label">METALLURGY</span>
+            <span class="spec-value" id="dossierMetal"></span>
+          </div>
+          <div class="spec-block">
+            <span class="spec-label">GEMOLOGICAL SPEC</span>
+            <span class="spec-value" id="dossierGem"></span>
+          </div>
+          <div class="spec-block">
+            <span class="spec-label">ANATOMICAL CONTOUR</span>
+            <span class="spec-value" id="dossierAnatomy"></span>
+          </div>
+          <div class="spec-block">
+            <span class="spec-label">PROVENANCE & ALLOCATION</span>
+            <span class="spec-value" id="dossierProvenance"></span>
+          </div>
+        </div>
+
+        <div class="dossier-quote" id="dossierQuote"></div>
+
+        <div class="dossier-actions">
+          <button class="btn-dossier-commission" id="dossierInquireBtn">COMMISSION BESPOKE ALLOCATION</button>
+          <button class="btn-dossier-secondary" id="dossierLoupeBtn">TOGGLE FULL-SCREEN LOUPE</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Private Commission Modal -->
+  <div class="commission-modal" id="commissionModal" aria-hidden="true">
+    <div class="commission-backdrop" id="commissionBackdrop"></div>
+    <div class="commission-panel">
+      <button class="commission-close" id="commissionClose" aria-label="Close Inquiry">✕</button>
+      <div class="commission-inner">
+        <span class="commission-eyebrow">CONFIDENTIAL LIAISON</span>
+        <h2 class="commission-headline">BESPOKE ANATOMICAL COMMISSION</h2>
+        <p class="commission-desc">
+          Each creation is individually engineered to the wearer's anatomical metrics and clinical practice.
+        </p>
+
+        <form class="commission-form" id="commissionForm" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="commName">FULL NAME & CREDENTIALS</label>
+              <input type="text" id="commName" placeholder="e.g. Dr. Vivienne Sterling, MD, FACS" required>
+            </div>
+            <div class="form-group">
+              <label for="commEmail">CONFIDENTIAL CORRESPONDENCE</label>
+              <input type="email" id="commEmail" placeholder="sterling@private-consortium.com" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="commSpecialty">CLINICAL DISCIPLINE</label>
+              <input type="text" id="commSpecialty" placeholder="e.g. Neurovascular Surgery">
+            </div>
+            <div class="form-group">
+              <label for="commArtifact">PIECE OF INTEREST</label>
+              <select id="commArtifact">
+                <option value="ref-an-01">Ref. AN-01 // The Phalanx Ring</option>
+                <option value="ref-pn-04">Ref. AN-04 // The Arterial Torque</option>
+                <option value="ref-an-08">Ref. AN-08 // The Carpal Cadence</option>
+                <option value="private-unique">Private Atelier Commission (Bespoke Anatomy)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="commLocation">PREFERRED SALON LOCATION</label>
+              <div class="radio-pills">
+                <label class="pill-label"><input type="radio" name="salon" value="Zurich" checked> <span>Zurich</span></label>
+                <label class="pill-label"><input type="radio" name="salon" value="Geneva"> <span>Geneva</span></label>
+                <label class="pill-label"><input type="radio" name="salon" value="NewYork"> <span>New York</span></label>
+                <label class="pill-label"><input type="radio" name="salon" value="Tokyo"> <span>Tokyo</span></label>
+                <label class="pill-label"><input type="radio" name="salon" value="Private"> <span>Private</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="commNotes">NOTES</label>
+              <textarea id="commNotes" rows="3" placeholder="Specifications, handedness, glove size..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" class="commission-submit-btn" id="submitCommission">
+              TRANSMIT CONFIDENTIAL INQUIRY
+            </button>
+            <span class="commission-guarantee">STRICT DISCRETION OBSERVED // NON-DISCLOSURE GUARANTEED</span>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <span class="success-icon">✓</span>
+            <h3>INQUIRY RECEIVED</h3>
+            <p>Your liaison request has been routed directly to the Master Atelier Director.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Loupe Zoom Overlay -->
+  <div class="loupe-modal" id="loupeModal" aria-hidden="true">
+    <div class="loupe-header">
+      <span class="loupe-title" id="loupeTitle">MACRO INSPECTION</span>
+      <span class="loupe-hint">MOVE CURSOR TO NAVIGATE</span>
+      <button class="loupe-close" id="loupeClose" aria-label="Close Loupe">✕</button>
+    </div>
+    <div class="loupe-viewport" id="loupeViewport">
+      <img src="" alt="Macro Magnification" class="loupe-full-image" id="loupeImg">
+    </div>
+  </div>
+
+  <!-- Search Modal (Catalogue Raisonné) -->
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-backdrop" id="searchBackdrop"></div>
+    <div class="search-panel">
+      <div class="search-header">
+        <span class="search-eyebrow">CATALOGUE RAISONNÉ SEARCH</span>
+        <button class="search-close" id="searchClose" aria-label="Close Search">✕</button>
+      </div>
+      <div class="search-input-wrap">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search piece, metallurgy, or anatomy..." autocomplete="off">
+      </div>
+      <div class="search-quick-tags">
+        <button class="quick-tag" data-query="Phalanx">THE PHALANX RING</button>
+        <button class="quick-tag" data-query="Torque">THE ARTERIAL TORQUE</button>
+        <button class="quick-tag" data-query="Carpal">THE CARPAL CADENCE</button>
+        <button class="quick-tag" data-query="Titanium">GRADE 5 TITANIUM</button>
+        <button class="quick-tag" data-query="Commission">BESPOKE ATELIER</button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- PPT / BOTTEGA VENETA STACKED SLIDE DECK (5 LAYERS) -->
+  <main class="ppt-deck" id="pptDeck">
+
+    <!-- LAYER 1: THE THRESHOLD (Hero — physician with bespoke ring) -->
+    <section class="ppt-slide is-active" id="layer-1" data-slide-index="0" data-slide-name="THE THRESHOLD">
+      <div class="slide-media-wrapper">
+        <img 
+          src="assets/images/hero-physician-ring.jpg" 
+          alt="Physician Editorial Portrait with Bespoke Gold Ring" 
+          class="slide-image hero-portrait"
+          loading="eager"
+        >
+      </div>
+
+      <!-- Bottega Veneta Centered Bottom Typography -->
+      <div class="bv-content-overlay">
+        <span class="bv-category">PEJ // HAUTE JOAILLERIE</span>
+        <p class="bv-description">Conceived for the healer's hand. Precision, anatomy, and permanence.</p>
+        <a href="javascript:void(0)" class="bv-action-link" id="heroExploreLink">Explore collection</a>
+      </div>
+
+      <div class="curtain-scroll-cue">
+        <span class="cue-label">SCROLL</span>
+        <div class="cue-line"></div>
+      </div>
+    </section>
+
+    <!-- LAYER 2: THE ARTIFACT (Bespoke Product — Wide Panoramic Macro) -->
+    <section class="ppt-slide" id="layer-2" data-slide-index="1" data-slide-name="THE ARTIFACT">
+      <div class="slide-media-wrapper">
+        <img 
+          src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=2560&h=1440&q=90" 
+          alt="Bespoke Haute Joaillerie Ring — Wide Panoramic Macro" 
+          class="slide-image collection-img"
+          loading="lazy"
+        >
+      </div>
+
+      <!-- Bottega Veneta Centered Bottom Typography -->
+      <div class="bv-content-overlay">
+        <span class="bv-category">THE PHALANX RING</span>
+        <p class="bv-description">Form-fitted to the proximal phalanx to anchor the mind in theatre.</p>
+        <a href="javascript:void(0)" class="bv-action-link" data-artifact="an-01">Discover piece</a>
+      </div>
+    </section>
+
+    <!-- LAYER 3: FINE JEWELRY METIER (Professional Luxury Jewelry Video) -->
+    <section class="ppt-slide video-interactive-slide" id="layer-3" data-slide-index="2" data-slide-name="KINETIC METIER">
+      <div class="slide-media-wrapper">
+        <video 
+          class="slide-video end-to-end-video" 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          poster="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=2560&h=1440&q=90"
+        >
+          <source src="assets/videos/luxury-jewelry-showcase.mp4" type="video/mp4">
+          <source src="assets/videos/fine-jewelry-feature.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Video Hover Minimal Specification Bar -->
+      <div class="video-hover-bar">
+        <span class="video-hover-text">REF. AN-04 &bull; COLD-FORGED 950 PLATINUM &bull; HYPER-ELASTIC TITANIUM MATRIX &bull; 0.02mm PRECISION</span>
+      </div>
+
+      <!-- Bottega Veneta Centered Bottom Typography -->
+      <div class="bv-content-overlay">
+        <span class="bv-category">KINETIC METIER</span>
+        <p class="bv-description">Sculpted diamond and platinum curves engineered with 0.02mm surgical precision.</p>
+        <a href="javascript:void(0)" class="bv-action-link" data-artifact="pn-04">Discover craft</a>
+      </div>
+    </section>
+
+    <!-- LAYER 4: BESPOKE DISPLAY FEATURE (High-Contrast Fine Jewelry Macro) -->
+    <section class="ppt-slide" id="layer-4" data-slide-index="3" data-slide-name="BESPOKE DISPLAY FEATURE">
+      <div class="slide-media-wrapper">
+        <img 
+          src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=2560&h=1440&q=90" 
+          alt="Bespoke Haute Joaillerie Kinetic Architecture — High Contrast Dark Field" 
+          class="slide-image collection-img high-contrast-jewel"
+          loading="lazy"
+        >
+        <div class="contrast-scrim"></div>
+      </div>
+
+      <!-- Bottega Veneta Centered Bottom Typography -->
+      <div class="bv-content-overlay">
+        <span class="bv-category">THE CARPAL CADENCE</span>
+        <p class="bv-description">Sculpted along the flexor retinaculum, cushioning wrist hyperextension.</p>
+        <a href="javascript:void(0)" class="bv-action-link" data-artifact="an-08">Discover piece</a>
+      </div>
+    </section>
+
+    <!-- LAYER 5: PRIVATE SALON & COMMISSION -->
+    <section class="ppt-slide" id="layer-5" data-slide-index="4" data-slide-name="PRIVATE ALLOCATION">
+      <div class="slide-media-wrapper">
+        <img 
+          src="assets/images/diamond-bracelet-macro.jpg" 
+          alt="Bespoke Haute Joaillerie Private Allocation — Diamond & Platinum Masterpiece" 
+          class="slide-image collection-img salon-luxury-img"
+          loading="lazy"
+        >
+        <div class="epilogue-scrim"></div>
+      </div>
+
+      <!-- Bottega Veneta Centered Bottom Typography -->
+      <div class="bv-content-overlay epilogue-bv-overlay">
+        <span class="bv-category">PRIVATE ALLOCATION</span>
+        <p class="bv-description">Individually engineered to the wearer's anatomical metrics and clinical practice.</p>
+        <a href="javascript:void(0)" class="bv-action-link" id="triggerCommissionFromFrame6">Request private liaison</a>
+        <div class="bv-cities-row">
+          <span>ZÜRICH</span> &bull; <span>GENÈVE</span> &bull; <span>NEW YORK</span> &bull; <span>TOKYO</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
