@@ -10,13 +10,87 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 1. PRODUCT ARCHIVE DATABASE (Conceived for the Healer's Hand)
   // =========================================================================
-  const PRODUCTS = {
+    const PRODUCTS = {
+    'ecg-solitaire-ring': {
+      id: 'ecg-solitaire-ring',
+      ref: 'REF. AN-01',
+      name: 'The Cardiac Solitaire Ring',
+      category: 'Rings',
+      colorName: 'Cold-Forged 950 Platinum & Solitaire Diamond',
+      macroImg: 'assets/images/ecg-solitaire-ring-macro.jpg',
+      modelImg: 'assets/images/ecg-solitaire-ring-model.jpg',
+      macroLabel: 'Continuous Stethoscope Contour & Sinus Rhythm Band',
+      modelLabel: 'Physician Wearing Cardiac Solitaire in Clinical Suite',
+      angles: [
+        'assets/images/ecg-solitaire-ring-macro.jpg',
+        'assets/images/ecg-solitaire-ring-model.jpg',
+        'assets/images/cardio-necklace-macro.jpg'
+      ],
+      colors: [
+        { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
+        { name: 'Grade 5 Surgical Titanium', color: '#A7AFB6' }
+      ],
+      sizes: ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'],
+      defaultSize: '12',
+      anatomy: "Contoured with a clinical sinus rhythm engraving, calibrated flush to preserve surgical tactile acuity and effortless latex/nitrile glove donning during extended 12-hour surgical procedures.",
+      craft: "Hand-forged in Geneva from 100% hypoallergenic 950 platinum with cold-set 1.85ct VVS1 diamond. Resistant to chlorhexidine scrubs and ultrasonic autoclave sterilization.",
+      quote: '"A permanent pulse etched into platinum for the healer whose hands guard life."'
+    },
+    'cardio-necklace': {
+      id: 'cardio-necklace',
+      ref: 'REF. PN-01',
+      name: 'The Cardio Stethoscope Pendant',
+      category: 'Necklaces',
+      colorName: '18K Rose Gold & Pavé Brilliant Diamonds',
+      macroImg: 'assets/images/cardio-necklace-macro.jpg',
+      modelImg: 'assets/images/cardio-necklace-model.jpg',
+      macroLabel: 'Heart Stethoscope Armature with Solitaire Diamond Center',
+      modelLabel: 'Physician Styling with Clinical Stethoscope & White Coat',
+      angles: [
+        'assets/images/cardio-necklace-macro.jpg',
+        'assets/images/cardio-necklace-model.jpg',
+        'assets/images/ecg-solitaire-ring-macro.jpg'
+      ],
+      colors: [
+        { name: '18K Rose Gold & Pavé Diamonds', color: '#CED4DA' },
+        { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' }
+      ],
+      sizes: ['40cm Collar', '42cm Collar', '45cm Princess'],
+      defaultSize: '42cm Collar',
+      anatomy: "Sculpted along the suprasternal notch, resting flush against clinical white coat attire and tailored to flex naturally with thoracic respiratory expansion.",
+      craft: "Cast in solid 18K rose gold with hand-set micro-pavé diamonds along the binaural loop and a 1.20ct brilliant-cut solitaire diamond center.",
+      quote: '"The eternal acoustic rhythm between the healer and the human heartbeat."'
+    },
+    'atrial-earrings': {
+      id: 'atrial-earrings',
+      ref: 'REF. PN-02',
+      name: 'The Atrial Pulse Earrings',
+      category: 'Earrings',
+      colorName: '18K Rose Gold & Micro-Pavé Diamonds',
+      macroImg: 'assets/images/atrial-earrings-macro.jpg',
+      modelImg: 'assets/images/atrial-earrings-model.jpg',
+      macroLabel: 'Dual Atrial Stethoscope Drops with Floating Diamonds',
+      modelLabel: 'Clinical Lobe Placement // Zero Interference with Diagnostic Gear',
+      angles: [
+        'assets/images/atrial-earrings-macro.jpg',
+        'assets/images/atrial-earrings-model.jpg'
+      ],
+      colors: [
+        { name: '18K Rose Gold & Diamonds', color: '#CED4DA' },
+        { name: 'Grade 5 Titanium Post', color: '#A7AFB6' }
+      ],
+      sizes: ['Standard Ergonomic Drop'],
+      defaultSize: 'Standard Ergonomic Drop',
+      anatomy: "Low-drag ergonomic droplet profile engineered to sit flush against the earlobe, preventing snagging during stethoscope earpiece insertion and surgical loupe use.",
+      craft: "Precision-cast 18K rose gold loops with secure leverback closures and hypo-allergenic titanium posts for 24-hour on-call comfort.",
+      quote: '"Discreet diagnostic brilliance calibrated for clinical devotion."'
+    },
     'soft-knot-ring': {
       id: 'soft-knot-ring',
-      ref: 'REF. AN-01',
+      ref: 'REF. AN-02',
       name: 'Soft Knot Ring',
       category: 'Rings',
-      colorName: 'Yellow Gold 18K',
+      colorName: 'Yellow Gold 18K & Polished Bevel',
       macroImg: 'assets/images/ring-soft-knot-macro.jpg',
       modelImg: 'assets/images/ring-soft-knot-model.jpg',
       macroLabel: 'Continuous Knot Sculpture & 18K Gold Bevel',
@@ -24,14 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
       angles: [
         'assets/images/ring-soft-knot-macro.jpg',
         'assets/images/ring-soft-knot-model.jpg',
-        'assets/images/hero-physician-ring.jpg',
         'assets/images/ring-sardine-macro.jpg'
       ],
       colors: [
         { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
         { name: 'French Gray Patina', color: '#CED4DA' },
-        { name: 'Surgical Grade 5 Titanium', color: '#A7AFB6' },
-        { name: 'Anti-Flash White Finish', color: '#E9ECEF' }
+        { name: 'Surgical Grade 5 Titanium', color: '#A7AFB6' }
       ],
       sizes: ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'],
       defaultSize: '12',
@@ -39,34 +111,33 @@ document.addEventListener('DOMContentLoaded', () => {
       craft: "Cold-forged in Geneva from 100% recycled 18K gold. Non-reactive metallurgical composition resistant to surgical scrub solutions, chlorhexidine, and ultrasonic autoclave sterilization.",
       quote: '"The weight on the hand does not restrict; it anchors the mind through fifteen hours in theatre."'
     },
-    'sea-coral-ring': {
-      id: 'sea-coral-ring',
-      ref: 'REF. AN-02',
-      name: 'Sea Coral Ring',
-      category: 'Rings',
-      colorName: 'Cold-Forged 950 Platinum & Satin Patina',
-      macroImg: 'assets/images/ring-sardine-macro.jpg',
-      modelImg: 'assets/images/ring-sardine-model.jpg',
-      macroLabel: 'Organic Micro-Ridge Architecture',
-      modelLabel: 'Anatomical Profile on Healer’s Hand',
+    'carpal-cadence': {
+      id: 'carpal-cadence',
+      ref: 'REF. AN-03',
+      name: 'The Carpal Cadence',
+      category: 'Bracelets',
+      colorName: 'Cold-Forged 950 Platinum & Baguette Diamonds',
+      macroImg: 'assets/images/bracelet-carpal-macro.jpg',
+      modelImg: 'assets/images/diamond-bracelet-macro.jpg',
+      macroLabel: 'High-Contrast Kinetic Articulation',
+      modelLabel: 'Dorsal Wrist Alignment & Micro-Pavé Diamonds',
       angles: [
-        'assets/images/ring-sardine-macro.jpg',
-        'assets/images/ring-sardine-model.jpg',
-        'assets/images/ring-soft-knot-macro.jpg'
+        'assets/images/bracelet-carpal-macro.jpg',
+        'assets/images/diamond-bracelet-macro.jpg'
       ],
       colors: [
-        { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
-        { name: 'Surgical Titanium Patina', color: '#A7AFB6' }
+        { name: 'Cold-Forged 950 Platinum & Diamonds', color: '#DEE2E6' },
+        { name: 'Grade 5 Surgical Titanium', color: '#A7AFB6' }
       ],
-      sizes: ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'],
-      defaultSize: '11',
-      anatomy: "Sculptural organic ridges inspired by osteological trabeculae, calibrated to provide subtle sensory grounding during tense diagnostic intervals.",
-      craft: "Individually textured by Master Goldsmiths using hand-chisels, sealed with a micro-satin finish that patinas gracefully over decades.",
-      quote: '"A tactile talisman bridging organic nature with human physiology."'
+      sizes: ['15cm', '16cm', '17cm', '18cm', '19cm'],
+      defaultSize: '17cm',
+      anatomy: "Sculpted along the flexor retinaculum, cushioning wrist hyperextension during microsurgical suture placement and prolonged precision tasks.",
+      craft: "Features 3.08ct flawless emerald and baguette diamonds set into an articulated platinum chassis with invisible safety clasp.",
+      quote: '"For the hands that stitch time back into living human flesh."'
     },
     'face-ring': {
       id: 'face-ring',
-      ref: 'REF. AN-03',
+      ref: 'REF. AN-04',
       name: 'Face Ring',
       category: 'Rings',
       colorName: 'Cold-Forged 950 Platinum & Mineral Crystal',
@@ -89,116 +160,44 @@ document.addEventListener('DOMContentLoaded', () => {
       craft: "Custom-cut cabochon set within cold-forged 18K yellow gold, precision-polished to eliminate any sharp edges that could tear clinical barriers.",
       quote: '"A bold anatomical statement of life force and permanence."'
     },
-    'candy-drop-earrings': {
-      id: 'candy-drop-earrings',
-      ref: 'REF. PN-01',
-      name: 'Candy Drop Earrings',
-      category: 'Earrings',
-      colorName: 'Sterling Silver 925 & Enamel Purity',
-      macroImg: 'assets/images/earrings-candy-drop-macro.jpg',
-      modelImg: 'assets/images/earrings-candy-drop-model.jpg',
-      macroLabel: 'Polished Droplet Contour with Micro-Speckles',
-      modelLabel: 'Side Profile Showing Pure Flush Lobe Placement',
+    'sea-coral-ring': {
+      id: 'sea-coral-ring',
+      ref: 'REF. AN-05',
+      name: 'Sea Coral Ring',
+      category: 'Rings',
+      colorName: 'Cold-Forged 950 Platinum & Satin Patina',
+      macroImg: 'assets/images/ring-sardine-macro.jpg',
+      modelImg: 'assets/images/ring-sardine-model.jpg',
+      macroLabel: 'Organic Micro-Ridge Architecture',
+      modelLabel: 'Anatomical Profile on Healer’s Hand',
       angles: [
-        'assets/images/earrings-candy-drop-macro.jpg',
-        'assets/images/earrings-candy-drop-model.jpg',
-        'assets/images/editorial-physician-earring.jpg'
-      ],
-      colors: [
-        { name: 'Sterling Silver 925', color: '#DEE2E6' },
-        { name: 'Anti-Flash White Enamel', color: '#E9ECEF' }
-      ],
-      sizes: ['Standard Ergonomic'],
-      defaultSize: 'Standard Ergonomic',
-      anatomy: "Weightless ergonomic droplet silhouette engineered to sit flush against the earlobe, preventing snagging during stethoscope and loupe use.",
-      craft: "Hand-poured enamel over cold-formed 925 sterling silver with hypo-allergenic surgical titanium posts and safety friction backs.",
-      quote: '"Weightless grace that remains invisible to the wearer while commanding reverence."'
-    },
-    'atrial-sapphire-stud': {
-      id: 'atrial-sapphire-stud',
-      ref: 'REF. PN-02',
-      name: 'The Atrial Sapphire Stud',
-      category: 'Earrings',
-      colorName: 'Cold-Forged 950 Platinum & Ceylon Sapphire',
-      macroImg: 'assets/images/editorial-physician-earring.jpg',
-      modelImg: 'assets/images/editorial-physician-earring.jpg',
-      macroLabel: 'Bespoke Sapphire Earring on Physician Model',
-      modelLabel: 'Clinical Stethoscope & Editorial Light Chiaroscuro',
-      angles: [
-        'assets/images/editorial-physician-earring.jpg',
-        'assets/images/earrings-candy-drop-macro.jpg'
+        'assets/images/ring-sardine-macro.jpg',
+        'assets/images/ring-sardine-model.jpg',
+        'assets/images/ring-soft-knot-macro.jpg'
       ],
       colors: [
         { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
-        { name: 'Surgical Titanium Post', color: '#A7AFB6' }
+        { name: 'Surgical Titanium Patina', color: '#A7AFB6' }
       ],
-      sizes: ['Standard Diagnostic'],
-      defaultSize: 'Standard Diagnostic',
-      anatomy: "Weight-balanced medical stud featuring surgical titanium stem to eliminate pressure necrosis during 14-hour hospital on-call shifts.",
-      craft: "Hand-selected unheated royal blue Ceylon sapphire, secured in a low-profile protective bezel tailored for operating theatre acoustics.",
-      quote: '"Discreet diagnostic elegance that speaks without uttering a single syllable."'
-    },
-    'carpal-cadence': {
-      id: 'carpal-cadence',
-      ref: 'REF. AN-04',
-      name: 'The Carpal Cadence',
-      category: 'Bracelets',
-      colorName: 'Cold-Forged 950 Platinum & Baguette Diamonds',
-      macroImg: 'assets/images/bracelet-carpal-macro.jpg',
-      modelImg: 'assets/images/diamond-bracelet-macro.jpg',
-      macroLabel: 'High-Contrast Kinetic Articulation',
-      modelLabel: 'Dorsal Wrist Alignment & Micro-Pavé Diamonds',
-      angles: [
-        'assets/images/bracelet-carpal-macro.jpg',
-        'assets/images/diamond-bracelet-macro.jpg'
-      ],
-      colors: [
-        { name: 'Cold-Forged 950 Platinum & Diamonds', color: '#DEE2E6' },
-        { name: 'Grade 5 Surgical Titanium', color: '#A7AFB6' }
-      ],
-      sizes: ['15cm', '16cm', '17cm', '18cm', '19cm'],
-      defaultSize: '17cm',
-      anatomy: "Sculpted along the flexor retinaculum, cushioning wrist hyperextension during microsurgical suture placement and prolonged precision tasks.",
-      craft: "Features 3.08ct flawless emerald and baguette diamonds set into an articulated platinum chassis with invisible safety clasp.",
-      quote: '"For the hands that stitch time back into living human flesh."'
-    },
-    'arterial-torque': {
-      id: 'arterial-torque',
-      ref: 'REF. PN-03',
-      name: 'The Arterial Torque',
-      category: 'Necklaces',
-      colorName: 'Cold-Forged 950 Platinum & Hyper-Elastic Titanium',
-      macroImg: 'assets/images/necklace-arterial-macro.jpg',
-      modelImg: 'assets/images/necklace-arterial-macro.jpg',
-      macroLabel: '0.02mm Sub-Millimeter Curve Vector',
-      modelLabel: 'Thoracic Cadence & Dynamic Reflection',
-      angles: [
-        'assets/images/necklace-arterial-macro.jpg',
-        'assets/images/bracelet-carpal-macro.jpg'
-      ],
-      colors: [
-        { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
-        { name: 'French Gray Titanium Core', color: '#CED4DA' }
-      ],
-      sizes: ['38cm Collar', '40cm Collar', '42cm Collar'],
-      defaultSize: '40cm Collar',
-      anatomy: "Continuous ribbon torque engineered to flex naturally with thoracic respiratory expansion and vascular rhythm.",
-      craft: "Combines 950 platinum with an internal super-elastic nitinol matrix, retaining flawless anatomical curvature forever.",
-      quote: '"The weight of existence transmuted into pure, luminous permanence."'
+      sizes: ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'],
+      defaultSize: '11',
+      anatomy: "Sculptural organic ridges inspired by osteological trabeculae, calibrated to provide subtle sensory grounding during tense diagnostic intervals.",
+      craft: "Individually textured by Master Goldsmiths using hand-chisels, sealed with a micro-satin finish that patinas gracefully over decades.",
+      quote: '"A tactile talisman bridging organic nature with human physiology."'
     },
     'surgical-brooch': {
       id: 'surgical-brooch',
-      ref: 'REF. AN-05',
+      ref: 'REF. AN-06',
       name: 'The Diagnostic Brooch',
       category: 'Brooches',
       colorName: 'Grade 5 Titanium & 18K White Gold',
       macroImg: 'assets/images/diamond-bracelet-macro.jpg',
-      modelImg: 'assets/images/hero-physician-ring.jpg',
+      modelImg: 'assets/images/ecg-solitaire-ring-model.jpg',
       macroLabel: 'Minimalist Lapel Armature',
       modelLabel: 'Physician White Coat Lapel Placement',
       angles: [
         'assets/images/diamond-bracelet-macro.jpg',
-        'assets/images/hero-physician-ring.jpg'
+        'assets/images/ecg-solitaire-ring-model.jpg'
       ],
       colors: [
         { name: 'Grade 5 Titanium & White Gold', color: '#DEE2E6' }
@@ -243,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const subnavPills = document.querySelectorAll('.subnav-pill');
   const previewCard = document.getElementById('previewCard') || document.getElementById('previewCardLeft');
   const previewImg = document.getElementById('previewImg') || document.getElementById('previewImgLeft');
+  const previewImgModel = document.getElementById('previewImgModel');
   const previewTitle = document.getElementById('previewTitle') || document.getElementById('previewTitleLeft');
   const previewDesc = document.getElementById('previewDesc') || document.getElementById('previewDescLeft');
   const menuViewAllBtn = document.getElementById('menuViewAllBtn');
@@ -272,6 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pdpCloseBtn = document.getElementById('pdpCloseBtn');
   const pdpHeroImageWrap = document.getElementById('pdpHeroImageWrap');
   const pdpHeroImg = document.getElementById('pdpHeroImg');
+  const pdpHeroImgModel = document.getElementById('pdpHeroImgModel');
   const pdpViewMacroBtn = document.getElementById('pdpViewMacroBtn');
   const pdpViewModelBtn = document.getElementById('pdpViewModelBtn');
   const pdpImgActiveLabel = document.getElementById('pdpImgActiveLabel');
@@ -354,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const findSalonBtn = document.getElementById('findSalonBtn');
 
   // Navigation State
-  let currentActiveProduct = PRODUCTS['soft-knot-ring'];
+  let currentActiveProduct = PRODUCTS['ecg-solitaire-ring'] || PRODUCTS['soft-knot-ring'];
   let currentNavOrigin = 'curtain'; // 'curtain' or 'collection'
 
   // =========================================================================
@@ -584,36 +585,41 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuBackdrop) menuBackdrop.addEventListener('click', closeMenu);
 
   // Menu Category Tab Hover / Click (The Ordinary Underline + Dynamic Single Preview)
-  const MENU_PREVIEWS = {
+    const MENU_PREVIEWS = {
     'collection': {
-      prodId: 'soft-knot-ring',
-      img: 'assets/images/ring-soft-knot-macro.jpg',
-      title: 'Soft Knot Ring',
-      desc: 'Isolated Macro Architecture & Continuous 18K Bevel'
+      prodId: 'ecg-solitaire-ring',
+      img: 'assets/images/ecg-solitaire-ring-macro.jpg',
+      modelImg: 'assets/images/ecg-solitaire-ring-model.jpg',
+      title: 'The Cardiac Solitaire Ring',
+      desc: 'Sinus Rhythm Shank & Stethoscope Platinum Setting'
     },
     'bespoke': {
-      prodId: 'carpal-cadence',
-      img: 'assets/images/bracelet-carpal-macro.jpg',
-      title: 'The Carpal Cadence',
-      desc: 'Bespoke Wrist Alignment & Suture Cushion Articulation'
+      prodId: 'cardio-necklace',
+      img: 'assets/images/cardio-necklace-macro.jpg',
+      modelImg: 'assets/images/cardio-necklace-model.jpg',
+      title: 'The Cardio Stethoscope Pendant',
+      desc: '18K Rose Gold Heart Cadence with Solitaire Diamond'
     },
     'meaning': {
-      prodId: 'soft-knot-ring',
-      img: 'assets/images/hero-physician-ring.jpg',
+      prodId: 'ecg-solitaire-ring',
+      img: 'assets/images/ecg-solitaire-ring-model.jpg',
+      modelImg: 'assets/images/ecg-solitaire-ring-macro.jpg',
       title: 'Mirroring & Belonging',
       desc: 'Opening directly onto a dignified portrait of a physician creates instant recognition. Deep trust without marketing.'
     },
     'anima': {
-      prodId: 'face-ring',
-      img: 'assets/images/ring-face-macro.jpg',
-      title: 'The Face Ring // Carnelian',
-      desc: 'Physical Life Force & Permanence in 950 Platinum'
+      prodId: 'atrial-earrings',
+      img: 'assets/images/atrial-earrings-macro.jpg',
+      modelImg: 'assets/images/atrial-earrings-model.jpg',
+      title: 'The Atrial Pulse Earrings',
+      desc: 'Weightless Flush Lobe Fit & Zero Diagnostic Interference'
     },
     'pneuma': {
-      prodId: 'candy-drop-earrings',
-      img: 'assets/images/earrings-candy-drop-macro.jpg',
-      title: 'Candy Drop Earrings',
-      desc: 'Vital Air & Weightless Profile for Sterile Theatre Attire'
+      prodId: 'cardio-necklace',
+      img: 'assets/images/cardio-necklace-macro.jpg',
+      modelImg: 'assets/images/cardio-necklace-model.jpg',
+      title: 'The Cardio Cadence',
+      desc: 'Vital Air & Acoustic Thoracic Resonance'
     }
   };
 
@@ -622,6 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!data) return;
 
     if (previewImg) previewImg.src = data.img;
+    if (previewImgModel) previewImgModel.src = data.modelImg || data.img;
     if (previewTitle) previewTitle.textContent = data.title;
     if (previewDesc) previewDesc.textContent = data.desc;
     if (previewCard) previewCard.setAttribute('data-target-product', data.prodId);
@@ -703,14 +710,19 @@ document.addEventListener('DOMContentLoaded', () => {
       collectionTitleBadge.textContent = categoryFilter === 'all' ? 'Collection' : categoryFilter;
     }
 
-    // Render: Exactly ONE single photo per screen (Zero multi-photo clutter)
+        // Render: Exactly ONE single photo per screen with smooth hover-reveal of model wearing it
     items.forEach((item, idx) => {
       const card = document.createElement('div');
       card.className = 'collection-product-card';
       card.innerHTML = `
-        <div class="card-media-wrap">
-          <span class="card-type-indicator">${item.category}</span>
-          <img src="${item.macroImg}" alt="${item.name} Isolated Macro Showcase" loading="lazy">
+        <div class="card-media-wrap hover-reveal-wrap">
+          <span class="card-type-indicator">
+            <span class="ind-default">${item.category}</span>
+            <span class="ind-hover">ON MODEL &bull; ANATOMICAL FIT</span>
+          </span>
+          <span class="card-hover-cue">HOVER: VIEW ON MODEL</span>
+          <img src="${item.macroImg}" alt="${item.name} Isolated Macro Showcase" class="card-img-macro" loading="lazy">
+          <img src="${item.modelImg}" alt="${item.name} Worn by Physician Model" class="card-img-model" loading="lazy">
         </div>
         <div class="card-caption-row">
           <div class="card-caption-left">
@@ -803,18 +815,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // 7. PRODUCT DETAIL VIEW (Single Hero Photo Stage — Zero Side-by-Side Clutter)
   // One single photo on whole screen, Fullscreen Loupe Zoom, Size Guide, Specs
   // =========================================================================
-  let currentPdpMode = 'macro';
+    let currentPdpMode = 'macro';
 
   function setPdpMode(mode) {
     if (!currentActiveProduct) return;
     currentPdpMode = mode;
     if (mode === 'macro') {
       if (pdpHeroImg) pdpHeroImg.src = currentActiveProduct.macroImg;
+      if (pdpHeroImgModel) pdpHeroImgModel.src = currentActiveProduct.modelImg;
+      if (pdpHeroImageWrap) pdpHeroImageWrap.classList.remove('is-model-mode');
       if (pdpImgActiveLabel) pdpImgActiveLabel.textContent = currentActiveProduct.macroLabel;
       if (pdpViewMacroBtn) pdpViewMacroBtn.classList.add('active');
       if (pdpViewModelBtn) pdpViewModelBtn.classList.remove('active');
     } else {
-      if (pdpHeroImg) pdpHeroImg.src = currentActiveProduct.modelImg;
+      if (pdpHeroImg) pdpHeroImg.src = currentActiveProduct.macroImg;
+      if (pdpHeroImgModel) pdpHeroImgModel.src = currentActiveProduct.modelImg;
+      if (pdpHeroImageWrap) pdpHeroImageWrap.classList.add('is-model-mode');
       if (pdpImgActiveLabel) pdpImgActiveLabel.textContent = currentActiveProduct.modelLabel;
       if (pdpViewModelBtn) pdpViewModelBtn.classList.add('active');
       if (pdpViewMacroBtn) pdpViewMacroBtn.classList.remove('active');
@@ -852,6 +868,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.querySelectorAll('.angle-thumb').forEach(t => t.classList.remove('active'));
           thumb.classList.add('active');
           if (pdpHeroImg) pdpHeroImg.src = angleUrl;
+          if (pdpHeroImgModel) pdpHeroImgModel.src = angleUrl;
           if (pdpImgActiveLabel) pdpImgActiveLabel.textContent = `${product.name} // Calibrated Perspective`;
         });
         pdpAnglesBar.appendChild(thumb);
@@ -990,12 +1007,13 @@ document.addEventListener('DOMContentLoaded', () => {
     loupeZoomImg.style.transform = `translate(${loupePanX}px, ${loupePanY}px) scale(${loupeScale})`;
   }
 
-  // Click on the single hero image triggers Loupe
+    // Click on the single hero image triggers Loupe
   if (pdpHeroImageWrap) {
     pdpHeroImageWrap.addEventListener('click', () => {
-      if (pdpHeroImg && pdpHeroImg.src) {
-        openLoupe(pdpHeroImg.src, `${currentActiveProduct.name} // FULLSCREEN LOUPE`);
-      }
+      const activeSrc = (currentPdpMode === 'model' || (pdpHeroImageWrap.matches(':hover') && !pdpHeroImageWrap.classList.contains('is-model-mode')))
+        ? (currentActiveProduct.modelImg || pdpHeroImg.src)
+        : (pdpHeroImg.src || currentActiveProduct.macroImg);
+      openLoupe(activeSrc, `${currentActiveProduct.name} // FULLSCREEN LOUPE`);
     });
   }
 

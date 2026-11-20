@@ -69,11 +69,11 @@
   <main class="curtain-deck" id="curtainDeck">
 
     <!-- FRAME 1: THE THRESHOLD (Page 2, 3, 4: Pure edge-to-edge physician hero, NO headlines, NO taglines, NO buttons) -->
-    <section class="curtain-frame is-active" id="frame-1" data-frame-index="0" data-theme="dark">
+    <section class="curtain-frame is-active" id="frame-1" data-frame-index="0" data-theme="light">
       <div class="frame-media-wrap">
         <img 
-          src="assets/images/hero-physician-ring.jpg" 
-          alt="Luxury editorial portrait of physician wearing bespoke ANIMA ring" 
+          src="assets/images/ecg-solitaire-ring-model.jpg" 
+          alt="Dignified editorial portrait of physician wearing bespoke ANIMA solitaire ring" 
           class="frame-img hero-img"
           loading="eager"
         >
@@ -86,39 +86,60 @@
       </div>
     </section>
 
-    <!-- FRAME 2: BEST COLLECTION MACRO 1 (Click picture to open full product details) -->
-    <section class="curtain-frame product-curtain-frame" id="frame-2" data-frame-index="1" data-product-id="soft-knot-ring" data-theme="light">
-      <div class="frame-media-wrap">
+    <!-- FRAME 2: BEST COLLECTION MACRO 1 (Click picture to open full product details; Hover reveals model) -->
+    <section class="curtain-frame product-curtain-frame" id="frame-2" data-frame-index="1" data-product-id="ecg-solitaire-ring" data-theme="dark">
+      <div class="frame-media-wrap hover-reveal-wrap">
         <img 
-          src="assets/images/ring-soft-knot-macro.jpg" 
-          alt="Bespoke Soft Knot Ring — Pure Macro Photograph" 
-          class="frame-img macro-img"
+          src="assets/images/ecg-solitaire-ring-macro.jpg" 
+          alt="The Cardiac Solitaire Ring — Isolated Macro Photograph" 
+          class="frame-img frame-img-macro"
           loading="lazy"
         >
+        <img 
+          src="assets/images/ecg-solitaire-ring-model.jpg" 
+          alt="Physician Wearing The Cardiac Solitaire Ring in Clinical Suite" 
+          class="frame-img frame-img-model"
+          loading="lazy"
+        >
+        <span class="card-hover-cue">HOVER: VIEW ON MODEL</span>
       </div>
     </section>
 
-    <!-- FRAME 3: BEST COLLECTION MACRO 2 (Click picture to open full product details) -->
-    <section class="curtain-frame product-curtain-frame" id="frame-3" data-frame-index="2" data-product-id="candy-drop-earrings" data-theme="light">
-      <div class="frame-media-wrap">
+    <!-- FRAME 3: BEST COLLECTION MACRO 2 (Click picture to open full product details; Hover reveals model) -->
+    <section class="curtain-frame product-curtain-frame" id="frame-3" data-frame-index="2" data-product-id="cardio-necklace" data-theme="dark">
+      <div class="frame-media-wrap hover-reveal-wrap">
         <img 
-          src="assets/images/earrings-candy-drop-macro.jpg" 
-          alt="Candy Drop Earrings — Isolated Macro" 
-          class="frame-img macro-img"
+          src="assets/images/cardio-necklace-macro.jpg" 
+          alt="The Cardio Stethoscope Pendant — Isolated Macro" 
+          class="frame-img frame-img-macro"
           loading="lazy"
         >
+        <img 
+          src="assets/images/cardio-necklace-model.jpg" 
+          alt="Physician Wearing The Cardio Stethoscope Pendant" 
+          class="frame-img frame-img-model"
+          loading="lazy"
+        >
+        <span class="card-hover-cue">HOVER: VIEW ON MODEL</span>
       </div>
     </section>
 
-    <!-- FRAME 4: EDITORIAL PHYSICIAN PORTRAIT 2 (Click picture to open full product details) -->
-    <section class="curtain-frame product-curtain-frame" id="frame-4" data-frame-index="3" data-product-id="atrial-sapphire-stud" data-theme="light">
-      <div class="frame-media-wrap">
+    <!-- FRAME 4: EDITORIAL PHYSICIAN PORTRAIT 2 (Click picture to open full product details; Hover reveals model) -->
+    <section class="curtain-frame product-curtain-frame" id="frame-4" data-frame-index="3" data-product-id="atrial-earrings" data-theme="dark">
+      <div class="frame-media-wrap hover-reveal-wrap">
         <img 
-          src="assets/images/editorial-physician-earring.jpg" 
-          alt="Editorial physician wearing bespoke sapphire earring with clinical stethoscope" 
-          class="frame-img editorial-img"
+          src="assets/images/atrial-earrings-macro.jpg" 
+          alt="The Atrial Pulse Earrings — Isolated Macro" 
+          class="frame-img frame-img-macro"
           loading="lazy"
         >
+        <img 
+          src="assets/images/atrial-earrings-model.jpg" 
+          alt="Physician Wearing The Atrial Pulse Earrings" 
+          class="frame-img frame-img-model"
+          loading="lazy"
+        >
+        <span class="card-hover-cue">HOVER: VIEW ON MODEL</span>
       </div>
     </section>
 
@@ -303,15 +324,17 @@
         <button class="subnav-pill" data-filter="Brooches">Brooches</button>
       </div>
 
-      <!-- Dynamic Visual Preview Area (Single Featured Photo — Zero Multi-Photo Clutter) -->
+      <!-- Dynamic Visual Preview Area (Hover reveals model wearing it) -->
       <div class="menu-preview-area" id="menuPreviewArea">
-        <div class="preview-card single-preview" id="previewCard" data-target-product="soft-knot-ring">
-          <div class="preview-img-wrap">
-            <img src="assets/images/ring-soft-knot-macro.jpg" alt="Featured Preview" id="previewImg">
+        <div class="preview-card single-preview hover-reveal-wrap" id="previewCard" data-target-product="ecg-solitaire-ring">
+          <div class="preview-img-wrap hover-reveal-wrap">
+            <span class="preview-hover-cue">HOVER: VIEW ON MODEL</span>
+            <img src="assets/images/ecg-solitaire-ring-macro.jpg" alt="Featured Preview Macro" id="previewImg" class="preview-img-macro">
+            <img src="assets/images/ecg-solitaire-ring-model.jpg" alt="Featured Preview Worn by Model" id="previewImgModel" class="preview-img-model">
           </div>
           <div class="preview-caption">
-            <span class="preview-title" id="previewTitle">Soft Knot Ring</span>
-            <span class="preview-desc" id="previewDesc">Isolated Macro Architecture</span>
+            <span class="preview-title" id="previewTitle">The Cardiac Solitaire Ring</span>
+            <span class="preview-desc" id="previewDesc">Sinus Rhythm Shank & Stethoscope Platinum Setting</span>
           </div>
         </div>
       </div>
@@ -450,11 +473,13 @@
 
     <div class="pdp-main-content">
 
-      <!-- SINGLE HERO PHOTO STAGE (One single photo on whole screen at a time — with view switcher) -->
+      <!-- SINGLE HERO PHOTO STAGE (One single photo on whole screen at a time — with view switcher & hover reveal) -->
       <div class="pdp-hero-stage">
-        <div class="pdp-single-image-wrap zoomable" id="pdpHeroImageWrap" title="Click to open Fullscreen Loupe Zoom">
-          <img src="" alt="Product Showcase" id="pdpHeroImg" class="pdp-hero-img">
+        <div class="pdp-single-image-wrap zoomable hover-reveal-wrap" id="pdpHeroImageWrap" title="Click to open Fullscreen Loupe Zoom">
+          <img src="" alt="Product Macro Showcase" id="pdpHeroImg" class="pdp-hero-img pdp-hero-img-macro">
+          <img src="" alt="Product Worn by Model" id="pdpHeroImgModel" class="pdp-hero-img pdp-hero-img-model">
           <span class="zoom-cue-pill">CLICK TO ZOOM IN &oplus;</span>
+          <span class="pdp-hover-cue">HOVER: VIEW ON MODEL</span>
         </div>
         <div class="pdp-view-switch-row">
           <button class="pdp-view-switch-btn active" id="pdpViewMacroBtn" data-view="macro">

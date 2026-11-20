@@ -1177,16 +1177,95 @@ body:not(.is-loading) .preloader {
   background-color: var(--c-seasalt);
 }
 
-.card-media-wrap img {
+/* Hover-Reveal Macro to Model Images */
+.card-img-macro,
+.card-img-model,
+.frame-img-macro,
+.frame-img-model,
+.preview-img-macro,
+.preview-img-model,
+.pdp-hero-img-macro,
+.pdp-hero-img-model {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.8s var(--ease-smooth);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.collection-product-card:hover .card-media-wrap img {
+.card-img-macro,
+.frame-img-macro,
+.preview-img-macro,
+.pdp-hero-img-macro {
+  opacity: 1;
+  z-index: 1;
+  transform: scale(1);
+}
+
+.card-img-model,
+.frame-img-model,
+.preview-img-model,
+.pdp-hero-img-model {
+  opacity: 0;
+  z-index: 2;
   transform: scale(1.025);
+  pointer-events: none;
+}
+
+/* Collection Card Hover: Macro fades out, Model fades in */
+.collection-product-card:hover .card-img-macro {
+  opacity: 0;
+  transform: scale(0.985);
+}
+
+.collection-product-card:hover .card-img-model {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Curtain Frame Hover: Macro fades out, Model fades in */
+.product-curtain-frame:hover .frame-img-macro {
+  opacity: 0;
+  transform: scale(0.985);
+}
+
+.product-curtain-frame:hover .frame-img-model {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Preview Card Hover: Macro fades out, Model fades in */
+.preview-card:hover .preview-img-macro {
+  opacity: 0;
+  transform: scale(0.985);
+}
+
+.preview-card:hover .preview-img-model {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* PDP Hero Hover: Preview Model when in Macro Mode */
+.pdp-single-image-wrap:not(.is-model-mode):hover .pdp-hero-img-macro {
+  opacity: 0;
+  transform: scale(0.985);
+}
+
+.pdp-single-image-wrap:not(.is-model-mode):hover .pdp-hero-img-model {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pdp-single-image-wrap.is-model-mode .pdp-hero-img-macro {
+  opacity: 0;
+}
+
+.pdp-single-image-wrap.is-model-mode .pdp-hero-img-model {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .card-type-indicator {
@@ -1202,7 +1281,51 @@ body:not(.is-loading) .preloader {
   border: 1px solid var(--c-platinum);
   color: var(--c-font);
   font-weight: 500;
-  z-index: 2;
+  z-index: 4;
+  transition: all 0.3s ease;
+}
+
+.card-type-indicator .ind-hover {
+  display: none;
+}
+
+.collection-product-card:hover .card-type-indicator {
+  border-color: var(--c-font);
+}
+
+.collection-product-card:hover .card-type-indicator .ind-default {
+  display: none;
+}
+
+.collection-product-card:hover .card-type-indicator .ind-hover {
+  display: inline;
+}
+
+.card-hover-cue,
+.preview-hover-cue,
+.pdp-hover-cue {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: rgba(248, 249, 250, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border: 1px solid var(--c-platinum);
+  color: var(--c-font);
+  font-weight: 500;
+  z-index: 4;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.collection-product-card:hover .card-hover-cue,
+.preview-card:hover .preview-hover-cue,
+.pdp-single-image-wrap:hover .pdp-hover-cue {
+  opacity: 0;
+  transform: translateY(4px);
 }
 
 .card-caption-row {
