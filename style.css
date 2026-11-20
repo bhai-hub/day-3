@@ -838,12 +838,12 @@ body:not(.is-loading) .preloader {
   background-color: var(--c-white);
 }
 
-/* Dynamic Single Image Preview Area (Zero Multi-Photo Clutter) */
+/* Dynamic Single Image Preview Area (Wide Landscape Preview) */
 .menu-preview-area {
   flex: 1;
   display: flex;
   justify-content: center;
-  max-width: 680px;
+  max-width: 880px;
   margin: 0 auto;
   width: 100%;
   min-height: 380px;
@@ -856,7 +856,8 @@ body:not(.is-loading) .preloader {
   cursor: pointer;
   background-color: var(--c-white);
   border: 1px solid var(--c-platinum);
-  padding: 16px;
+  padding: 0;
+  overflow: hidden;
   width: 100%;
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
@@ -870,21 +871,26 @@ body:not(.is-loading) .preloader {
 .preview-img-wrap {
   position: relative;
   width: 100%;
-  height: 340px;
+  aspect-ratio: 16 / 9;
+  height: 360px;
   overflow: hidden;
   background-color: var(--c-seasalt);
 }
 
 .preview-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   transition: transform 0.7s var(--ease-smooth);
 }
 
 .preview-card:hover .preview-img-wrap img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .preview-caption {
-  margin-top: 14px;
+  padding: 18px 24px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -1127,19 +1133,19 @@ body:not(.is-loading) .preloader {
   color: var(--c-font);
 }
 
-/* Single Photo Stream — Exactly ONE photo on the whole screen */
+/* Wide Image Collection Showcase — Cinematic Full-Width Display */
 .collection-grid-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 40px 24px 80px;
+  padding: 40px 32px 100px;
 }
 
 .single-photo-stream,
 .two-column-grid {
   display: flex;
   flex-direction: column;
-  gap: 72px;
+  gap: 80px;
   width: 100%;
 }
 
@@ -1149,60 +1155,59 @@ body:not(.is-loading) .preloader {
   cursor: pointer;
   background-color: var(--c-white);
   border: 1px solid var(--c-platinum);
-  padding: 32px 32px 24px;
+  padding: 0;
   width: 100%;
-  min-height: 82vh;
-  justify-content: space-between;
+  overflow: hidden;
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 .collection-product-card:hover {
   transform: translateY(-4px);
   border-color: var(--c-font);
-  box-shadow: 0 20px 48px rgba(167, 175, 182, 0.12);
+  box-shadow: 0 24px 56px rgba(89, 89, 89, 0.08);
 }
 
 .card-media-wrap {
   position: relative;
   width: 100%;
-  height: 68vh;
+  aspect-ratio: 16 / 9;
   min-height: 480px;
-  max-height: 780px;
+  max-height: 740px;
   overflow: hidden;
-  background-color: var(--c-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: var(--c-seasalt);
 }
 
 .card-media-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  transition: transform 0.75s var(--ease-smooth);
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s var(--ease-smooth);
 }
 
 .collection-product-card:hover .card-media-wrap img {
-  transform: scale(1.03);
+  transform: scale(1.025);
 }
 
 .card-type-indicator {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 20px;
+  left: 20px;
   font-size: 0.65rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   background: rgba(248, 249, 250, 0.94);
-  padding: 6px 12px;
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
   border: 1px solid var(--c-platinum);
   color: var(--c-font);
   font-weight: 500;
+  z-index: 2;
 }
 
 .card-caption-row {
-  margin-top: 24px;
-  padding-top: 20px;
+  padding: 24px 36px 28px;
+  background-color: var(--c-white);
   border-top: 1px solid var(--c-platinum);
   display: flex;
   align-items: center;
@@ -1353,45 +1358,43 @@ body:not(.is-loading) .preloader {
 
 .pdp-main-content {
   width: 100%;
-  max-width: 1360px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 40px 48px 100px;
+  padding: 40px 32px 100px;
 }
 
-/* Single Hero Photo Stage (Exactly ONE photo on screen at a time — Zero side-by-side photos) */
+/* Wide Hero Photo Stage — Full-Width Cinematic Display */
 .pdp-hero-stage {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1080px;
+  max-width: 100%;
   margin: 0 auto 36px;
 }
 
 .pdp-single-image-wrap {
   position: relative;
   width: 100%;
-  height: 68vh;
+  aspect-ratio: 16 / 9;
   min-height: 480px;
-  max-height: 750px;
+  max-height: 740px;
   overflow: hidden;
-  background-color: var(--c-white);
+  background-color: var(--c-seasalt);
   border: 1px solid var(--c-platinum);
   cursor: zoom-in;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .pdp-hero-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   transition: transform 0.6s var(--ease-smooth);
 }
 
 .pdp-single-image-wrap:hover .pdp-hero-img {
-  transform: scale(1.025);
+  transform: scale(1.02);
 }
 
 .pdp-view-switch-row {
@@ -2538,18 +2541,24 @@ body:not(.is-loading) .preloader {
   }
 
   .collection-product-card {
-    padding: 20px 16px 18px;
+    padding: 0;
     min-height: auto;
   }
 
   .card-media-wrap {
-    height: 52vh;
-    min-height: 320px;
+    aspect-ratio: 16 / 10;
+    min-height: 280px;
+    height: auto;
   }
 
   .pdp-single-image-wrap {
-    height: 52vh;
-    min-height: 320px;
+    aspect-ratio: 16 / 10;
+    min-height: 280px;
+    height: auto;
+  }
+
+  .card-caption-row {
+    padding: 18px 20px 20px;
   }
 
   .collection-grid-container {
