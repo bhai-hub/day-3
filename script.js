@@ -555,10 +555,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Quiet Reference Tags (Page 5: Click reveals details or commission)
-  document.querySelectorAll('.quiet-ref-tag').forEach(tag => {
-    tag.addEventListener('click', (e) => {
-      const prodId = tag.getAttribute('data-product-id');
+  // Click directly on the Big Picture itself -> Open page containing all information
+  document.querySelectorAll('.curtain-frame[data-product-id]').forEach(frame => {
+    frame.addEventListener('click', (e) => {
+      // Avoid triggering when clicking header or scroll controls
+      if (e.target.closest('.curtain-pagination') || e.target.closest('.site-header') || e.target.closest('.curtain-scroll-hint')) {
+        return;
+      }
+      const prodId = frame.getAttribute('data-product-id');
       if (prodId && PRODUCTS[prodId]) {
         currentNavOrigin = 'curtain';
         openProductDetail(PRODUCTS[prodId]);

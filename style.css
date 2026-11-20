@@ -456,78 +456,19 @@ body:not(.is-loading) .preloader {
 }
 
 /* ==========================================================================
-   QUIET PALE-GRAY REFERENCE TAG (Page 5 & 6)
-   Enhanced depth & contrast: crisp white typography on Cadet backdrop
+   PRODUCT CURTAIN FRAMES
+   Clicking directly on the big picture opens the page containing all information
    ========================================================================== */
-.quiet-ref-tag {
-  position: absolute;
-  bottom: 44px;
-  left: 44px;
-  z-index: 25;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 16px 24px;
-  background-color: rgba(140, 150, 158, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: var(--c-white);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
-  transition: all 0.35s ease;
+.product-curtain-frame {
   cursor: pointer;
 }
 
-.quiet-ref-tag:hover {
-  background-color: rgba(120, 130, 140, 0.98);
-  transform: translateY(-2px);
-  border-color: var(--c-white);
+.product-curtain-frame .frame-media-wrap {
+  transition: transform 0.8s var(--ease-smooth);
 }
 
-.tag-body {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.tag-ref-code {
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  color: var(--c-platinum);
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.tag-title {
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
-  letter-spacing: 0.2em;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--c-white);
-}
-
-.tag-meta {
-  font-size: 0.75rem;
-  color: var(--c-seasalt);
-  letter-spacing: 0.05em;
-}
-
-.tag-action-btn {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 8px 16px;
-  background: var(--c-white);
-  color: var(--c-cadetgray);
-  border: 1px solid var(--c-white);
-  transition: all 0.3s ease;
-}
-
-.tag-action-btn:hover {
-  background-color: var(--c-seasalt);
-  transform: translateX(2px);
+.product-curtain-frame:hover .frame-media-wrap {
+  transform: scale(1.015);
 }
 
 /* ==========================================================================
@@ -2511,18 +2452,6 @@ body:not(.is-loading) .preloader {
 @media (max-width: 768px) {
   .curtain-pagination {
     display: none;
-  }
-
-  .quiet-ref-tag {
-    bottom: 24px;
-    left: 20px;
-    right: 20px;
-    gap: 12px;
-    padding: 12px 16px;
-  }
-
-  .tag-title {
-    font-size: 0.8rem;
   }
 
   .two-column-grid {
