@@ -303,32 +303,22 @@
         <button class="subnav-pill" data-filter="Brooches">Brooches</button>
       </div>
 
-      <!-- Dynamic Visual Preview Area (Page 8: Two large images in one row!) -->
+      <!-- Dynamic Visual Preview Area (Single Featured Photo — Zero Multi-Photo Clutter) -->
       <div class="menu-preview-area" id="menuPreviewArea">
-        <div class="preview-card" id="previewCardLeft" data-target-product="soft-knot-ring">
+        <div class="preview-card single-preview" id="previewCard" data-target-product="soft-knot-ring">
           <div class="preview-img-wrap">
-            <img src="assets/images/ring-soft-knot-macro.jpg" alt="Preview Image 1" id="previewImgLeft">
+            <img src="assets/images/ring-soft-knot-macro.jpg" alt="Featured Preview" id="previewImg">
           </div>
           <div class="preview-caption">
-            <span class="preview-title" id="previewTitleLeft">Soft Knot Ring</span>
-            <span class="preview-desc" id="previewDescLeft">Isolated Macro Architecture</span>
-          </div>
-        </div>
-
-        <div class="preview-card" id="previewCardRight" data-target-product="soft-knot-ring">
-          <div class="preview-img-wrap">
-            <img src="assets/images/ring-soft-knot-model.jpg" alt="Preview Image 2" id="previewImgRight">
-          </div>
-          <div class="preview-caption">
-            <span class="preview-title" id="previewTitleRight">Model Wearing Soft Knot Ring</span>
-            <span class="preview-desc" id="previewDescRight">Clinical Attire & Anatomical Ergonomics</span>
+            <span class="preview-title" id="previewTitle">Soft Knot Ring</span>
+            <span class="preview-desc" id="previewDesc">Isolated Macro Architecture</span>
           </div>
         </div>
       </div>
 
       <!-- Action Button to View Full Collection -->
       <div class="menu-cta-wrap">
-        <button class="menu-view-all-btn" id="menuViewAllBtn">ENTER FULL 2-COLUMN COLLECTION &rarr;</button>
+        <button class="menu-view-all-btn" id="menuViewAllBtn">ENTER FULL COLLECTION &rarr;</button>
       </div>
 
       <!-- Bottom Utility Options within Menu (Page 24: Search, Login, Customer Care, Your Country) -->
@@ -424,10 +414,10 @@
       </div>
     </div>
 
-    <!-- 2-COLUMN PRODUCT GRID ("WHAT WE WANT" — Page 8 & 10) -->
+    <!-- SINGLE FULL-SCREEN PHOTO COLLECTION SHOWCASE (Exactly one photo per screen — Zero side-by-side clutter) -->
     <div class="collection-grid-container">
-      <div class="two-column-grid" id="twoColumnGrid">
-        <!-- Populated dynamically by script.js -->
+      <div class="single-photo-stream" id="twoColumnGrid">
+        <!-- Populated dynamically by script.js: Exactly ONE single photo per screen -->
       </div>
     </div>
 
@@ -460,23 +450,21 @@
 
     <div class="pdp-main-content">
 
-      <!-- TWO LARGE SIDE-BY-SIDE IMAGES (Page 14 & 15: Product Macro + Model wearing it) -->
-      <div class="pdp-images-row">
-        <div class="pdp-image-col zoomable" id="pdpImageLeftCol" title="Click to open Fullscreen Zoom">
-          <div class="pdp-img-container">
-            <img src="" alt="Product Macro Detail" id="pdpImgLeft" class="pdp-img">
-            <span class="zoom-cue-pill">CLICK TO ZOOM IN &oplus;</span>
-          </div>
-          <span class="image-sub-label" id="pdpImgLeftLabel">Macro Craft &amp; Bevel</span>
+      <!-- SINGLE HERO PHOTO STAGE (One single photo on whole screen at a time — with view switcher) -->
+      <div class="pdp-hero-stage">
+        <div class="pdp-single-image-wrap zoomable" id="pdpHeroImageWrap" title="Click to open Fullscreen Loupe Zoom">
+          <img src="" alt="Product Showcase" id="pdpHeroImg" class="pdp-hero-img">
+          <span class="zoom-cue-pill">CLICK TO ZOOM IN &oplus;</span>
         </div>
-
-        <div class="pdp-image-col zoomable" id="pdpImageRightCol" title="Click to open Fullscreen Zoom">
-          <div class="pdp-img-container">
-            <img src="" alt="Model Wearing Product" id="pdpImgRight" class="pdp-img">
-            <span class="zoom-cue-pill">CLICK TO ZOOM IN &oplus;</span>
-          </div>
-          <span class="image-sub-label" id="pdpImgRightLabel">Anatomical Fit on Healer's Hand</span>
+        <div class="pdp-view-switch-row">
+          <button class="pdp-view-switch-btn active" id="pdpViewMacroBtn" data-view="macro">
+            <span>01 &bull; MACRO DETAIL</span>
+          </button>
+          <button class="pdp-view-switch-btn" id="pdpViewModelBtn" data-view="model">
+            <span>02 &bull; ANATOMICAL FIT</span>
+          </button>
         </div>
+        <span class="image-sub-label" id="pdpImgActiveLabel">Macro Craft &amp; Bevel</span>
       </div>
 
       <!-- Thumbnails / Angles Switcher -->

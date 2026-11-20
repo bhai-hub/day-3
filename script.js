@@ -241,14 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuBackdrop = document.getElementById('menuBackdrop');
   const menuTabBtns = document.querySelectorAll('.menu-tab-btn');
   const subnavPills = document.querySelectorAll('.subnav-pill');
-  const previewCardLeft = document.getElementById('previewCardLeft');
-  const previewCardRight = document.getElementById('previewCardRight');
-  const previewImgLeft = document.getElementById('previewImgLeft');
-  const previewImgRight = document.getElementById('previewImgRight');
-  const previewTitleLeft = document.getElementById('previewTitleLeft');
-  const previewTitleRight = document.getElementById('previewTitleRight');
-  const previewDescLeft = document.getElementById('previewDescLeft');
-  const previewDescRight = document.getElementById('previewDescRight');
+  const previewCard = document.getElementById('previewCard') || document.getElementById('previewCardLeft');
+  const previewImg = document.getElementById('previewImg') || document.getElementById('previewImgLeft');
+  const previewTitle = document.getElementById('previewTitle') || document.getElementById('previewTitleLeft');
+  const previewDesc = document.getElementById('previewDesc') || document.getElementById('previewDescLeft');
   const menuViewAllBtn = document.getElementById('menuViewAllBtn');
 
   // Menu Bottom Utilities
@@ -269,17 +265,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const sortOptBtns = document.querySelectorAll('.sort-opt-btn');
   const colOpenCommissionBtn = document.getElementById('colOpenCommissionBtn');
 
-  // Product Detail View Elements
+  // Product Detail View Elements (Single Hero Photo Stage)
   const productDetailView = document.getElementById('productDetailView');
   const pdpBackBtn = document.getElementById('pdpBackBtn');
   const pdpBackLabel = document.getElementById('pdpBackLabel');
   const pdpCloseBtn = document.getElementById('pdpCloseBtn');
-  const pdpImgLeft = document.getElementById('pdpImgLeft');
-  const pdpImgRight = document.getElementById('pdpImgRight');
-  const pdpImgLeftLabel = document.getElementById('pdpImgLeftLabel');
-  const pdpImgRightLabel = document.getElementById('pdpImgRightLabel');
-  const pdpImageLeftCol = document.getElementById('pdpImageLeftCol');
-  const pdpImageRightCol = document.getElementById('pdpImageRightCol');
+  const pdpHeroImageWrap = document.getElementById('pdpHeroImageWrap');
+  const pdpHeroImg = document.getElementById('pdpHeroImg');
+  const pdpViewMacroBtn = document.getElementById('pdpViewMacroBtn');
+  const pdpViewModelBtn = document.getElementById('pdpViewModelBtn');
+  const pdpImgActiveLabel = document.getElementById('pdpImgActiveLabel');
   const pdpAnglesBar = document.getElementById('pdpAnglesBar');
   const pdpRefCode = document.getElementById('pdpRefCode');
   const pdpTitle = document.getElementById('pdpTitle');
@@ -588,77 +583,37 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuCloseBtn) menuCloseBtn.addEventListener('click', closeMenu);
   if (menuBackdrop) menuBackdrop.addEventListener('click', closeMenu);
 
-  // Menu Category Tab Hover / Click (The Ordinary Underline + Dynamic Preview)
+  // Menu Category Tab Hover / Click (The Ordinary Underline + Dynamic Single Preview)
   const MENU_PREVIEWS = {
     'collection': {
-      left: {
-        prodId: 'soft-knot-ring',
-        img: 'assets/images/ring-soft-knot-macro.jpg',
-        title: 'Soft Knot Ring',
-        desc: 'Isolated Macro Architecture'
-      },
-      right: {
-        prodId: 'soft-knot-ring',
-        img: 'assets/images/ring-soft-knot-model.jpg',
-        title: 'Model Wearing Soft Knot Ring',
-        desc: 'Clinical Attire & Anatomical Ergonomics'
-      }
+      prodId: 'soft-knot-ring',
+      img: 'assets/images/ring-soft-knot-macro.jpg',
+      title: 'Soft Knot Ring',
+      desc: 'Isolated Macro Architecture & Continuous 18K Bevel'
     },
     'bespoke': {
-      left: {
-        prodId: 'carpal-cadence',
-        img: 'assets/images/bracelet-carpal-macro.jpg',
-        title: 'The Carpal Cadence',
-        desc: 'Bespoke Wrist Alignment & Suture Cushion'
-      },
-      right: {
-        prodId: 'carpal-cadence',
-        img: 'assets/images/diamond-bracelet-macro.jpg',
-        title: 'Private Atelier Allocation',
-        desc: 'Custom Diamond & Platinum Craft'
-      }
+      prodId: 'carpal-cadence',
+      img: 'assets/images/bracelet-carpal-macro.jpg',
+      title: 'The Carpal Cadence',
+      desc: 'Bespoke Wrist Alignment & Suture Cushion Articulation'
     },
     'meaning': {
-      left: {
-        prodId: 'soft-knot-ring',
-        img: 'assets/images/hero-physician-ring.jpg',
-        title: 'Mirroring & Belonging',
-        desc: 'Opening directly onto a dignified portrait of a physician creates instant, silent recognition. Deep trust without marketing.'
-      },
-      right: {
-        prodId: 'soft-knot-ring',
-        img: 'assets/images/ring-soft-knot-macro.jpg',
-        title: 'Respect for High Intelligence',
-        desc: 'Elite practitioners dislike being sold to. Ultra-minimalism lets the purity of craftsmanship speak quietly.'
-      }
+      prodId: 'soft-knot-ring',
+      img: 'assets/images/hero-physician-ring.jpg',
+      title: 'Mirroring & Belonging',
+      desc: 'Opening directly onto a dignified portrait of a physician creates instant recognition. Deep trust without marketing.'
     },
     'anima': {
-      left: {
-        prodId: 'face-ring',
-        img: 'assets/images/ring-face-macro.jpg',
-        title: 'The Face Ring // Carnelian',
-        desc: 'Physical Life Force & Permanence'
-      },
-      right: {
-        prodId: 'face-ring',
-        img: 'assets/images/hero-physician-ring.jpg',
-        title: 'Physician Subtle Identification',
-        desc: 'Peer Recognition in First Half-Second'
-      }
+      prodId: 'face-ring',
+      img: 'assets/images/ring-face-macro.jpg',
+      title: 'The Face Ring // Carnelian',
+      desc: 'Physical Life Force & Permanence in 950 Platinum'
     },
     'pneuma': {
-      left: {
-        prodId: 'candy-drop-earrings',
-        img: 'assets/images/earrings-candy-drop-macro.jpg',
-        title: 'Candy Drop Earrings',
-        desc: 'Vital Air & Kinetic Lightness'
-      },
-      right: {
-        prodId: 'candy-drop-earrings',
-        img: 'assets/images/earrings-candy-drop-model.jpg',
-        title: 'Weightless Ergonomic Profile',
-        desc: 'Flush Lobe Fit & Zero Loupe Snagging'
-      }
+      prodId: 'candy-drop-earrings',
+      img: 'assets/images/earrings-candy-drop-macro.jpg',
+      title: 'Candy Drop Earrings',
+      desc: 'Vital Air & Weightless Profile for Sterile Theatre Attire'
     }
   };
 
@@ -666,21 +621,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = MENU_PREVIEWS[tabKey] || MENU_PREVIEWS['collection'];
     if (!data) return;
 
-    previewImgLeft.src = data.left.img;
-    previewTitleLeft.textContent = data.left.title;
-    previewDescLeft.textContent = data.left.desc;
-    previewCardLeft.setAttribute('data-target-product', data.left.prodId);
-
-    previewImgRight.src = data.right.img;
-    previewTitleRight.textContent = data.right.title;
-    previewDescRight.textContent = data.right.desc;
-    previewCardRight.setAttribute('data-target-product', data.right.prodId);
+    if (previewImg) previewImg.src = data.img;
+    if (previewTitle) previewTitle.textContent = data.title;
+    if (previewDesc) previewDesc.textContent = data.desc;
+    if (previewCard) previewCard.setAttribute('data-target-product', data.prodId);
   }
 
   menuTabBtns.forEach(btn => {
     const tab = btn.getAttribute('data-tab');
 
-    // Hover or Click triggers preview update (Page 7: "by hovering the cursor on these options these options show the items appearing on the screen")
+    // Hover or Click triggers preview update
     btn.addEventListener('mouseenter', () => {
       menuTabBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -706,17 +656,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Menu Preview Cards click
-  [previewCardLeft, previewCardRight].forEach(card => {
-    card.addEventListener('click', () => {
-      const prodId = card.getAttribute('data-target-product');
+  // Menu Preview Card click
+  if (previewCard) {
+    previewCard.addEventListener('click', () => {
+      const prodId = previewCard.getAttribute('data-target-product');
       if (prodId && PRODUCTS[prodId]) {
         closeMenu();
         currentNavOrigin = 'curtain';
         openProductDetail(PRODUCTS[prodId]);
       }
     });
-  });
+  }
 
   if (menuViewAllBtn) {
     menuViewAllBtn.addEventListener('click', () => {
@@ -726,8 +676,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 6. COLLECTION VIEW ("WHAT WE WANT" — Page 8, 10, 11, 12)
-  // Two large images in one row, alternating product macro & model wearing it!
+  // 6. COLLECTION VIEW — ONE SINGLE PHOTO ON THE WHOLE SCREEN
+  // Exactly ONE single photo displayed per screen. Zero side-by-side photos!
   // =========================================================================
   function renderCollectionGrid(categoryFilter = 'all', sortBy = 'curated') {
     if (!twoColumnGrid) return;
@@ -753,45 +703,31 @@ document.addEventListener('DOMContentLoaded', () => {
       collectionTitleBadge.textContent = categoryFilter === 'all' ? 'Collection' : categoryFilter;
     }
 
-    // Render pairs: Item Macro + Model wearing the item! (Page 10, 11, 12)
+    // Render: Exactly ONE single photo per screen (Zero multi-photo clutter)
     items.forEach((item, idx) => {
-      // 1. Isolated Macro Product Card
-      const macroCard = document.createElement('div');
-      macroCard.className = 'collection-product-card';
-      macroCard.innerHTML = `
+      const card = document.createElement('div');
+      card.className = 'collection-product-card';
+      card.innerHTML = `
         <div class="card-media-wrap">
-          <span class="card-type-indicator">MACRO ARTIFACT</span>
-          <img src="${item.macroImg}" alt="${item.name} Isolated Macro" loading="lazy">
+          <span class="card-type-indicator">${item.category}</span>
+          <img src="${item.macroImg}" alt="${item.name} Isolated Macro Showcase" loading="lazy">
         </div>
         <div class="card-caption-row">
-          <span class="card-product-name">${item.name}</span>
-          <span class="card-arrow">&rarr;</span>
+          <div class="card-caption-left">
+            <span class="card-product-ref">${item.ref}</span>
+            <h3 class="card-product-name">${item.name}</h3>
+          </div>
+          <div class="card-caption-right">
+            <span class="card-meta-text">${item.colorName}</span>
+            <span class="card-arrow">&rarr;</span>
+          </div>
         </div>
       `;
-      macroCard.addEventListener('click', () => {
+      card.addEventListener('click', () => {
         currentNavOrigin = 'collection';
         openProductDetail(item);
       });
-      twoColumnGrid.appendChild(macroCard);
-
-      // 2. Model Wearing Piece Card (Page 10 & 12)
-      const modelCard = document.createElement('div');
-      modelCard.className = 'collection-product-card';
-      modelCard.innerHTML = `
-        <div class="card-media-wrap">
-          <span class="card-type-indicator">ANATOMICAL CONTEXT</span>
-          <img src="${item.modelImg}" alt="${item.name} Worn by Model" loading="lazy">
-        </div>
-        <div class="card-caption-row">
-          <span class="card-product-name">${item.name} &bull; Editorial</span>
-          <span class="card-arrow">&rarr;</span>
-        </div>
-      `;
-      modelCard.addEventListener('click', () => {
-        currentNavOrigin = 'collection';
-        openProductDetail(item);
-      });
-      twoColumnGrid.appendChild(modelCard);
+      twoColumnGrid.appendChild(card);
     });
   }
 
@@ -864,9 +800,34 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // 7. PRODUCT DETAIL VIEW (Page 13, 14, 15, 16, 17, 18, 19, 20, 21, 22)
-  // Two large side-by-side images, Fullscreen Zoom, Size Guide, Vertical Specs
+  // 7. PRODUCT DETAIL VIEW (Single Hero Photo Stage — Zero Side-by-Side Clutter)
+  // One single photo on whole screen, Fullscreen Loupe Zoom, Size Guide, Specs
   // =========================================================================
+  let currentPdpMode = 'macro';
+
+  function setPdpMode(mode) {
+    if (!currentActiveProduct) return;
+    currentPdpMode = mode;
+    if (mode === 'macro') {
+      if (pdpHeroImg) pdpHeroImg.src = currentActiveProduct.macroImg;
+      if (pdpImgActiveLabel) pdpImgActiveLabel.textContent = currentActiveProduct.macroLabel;
+      if (pdpViewMacroBtn) pdpViewMacroBtn.classList.add('active');
+      if (pdpViewModelBtn) pdpViewModelBtn.classList.remove('active');
+    } else {
+      if (pdpHeroImg) pdpHeroImg.src = currentActiveProduct.modelImg;
+      if (pdpImgActiveLabel) pdpImgActiveLabel.textContent = currentActiveProduct.modelLabel;
+      if (pdpViewModelBtn) pdpViewModelBtn.classList.add('active');
+      if (pdpViewMacroBtn) pdpViewMacroBtn.classList.remove('active');
+    }
+  }
+
+  if (pdpViewMacroBtn) {
+    pdpViewMacroBtn.addEventListener('click', () => setPdpMode('macro'));
+  }
+  if (pdpViewModelBtn) {
+    pdpViewModelBtn.addEventListener('click', () => setPdpMode('model'));
+  }
+
   function openProductDetail(product) {
     if (!product) return;
     currentActiveProduct = product;
@@ -876,11 +837,8 @@ document.addEventListener('DOMContentLoaded', () => {
     pdpTitle.textContent = product.name;
     pdpColorName.textContent = product.colorName;
 
-    // Set Images & Labels (Page 14 & 15: Side by side images)
-    pdpImgLeft.src = product.macroImg;
-    pdpImgRight.src = product.modelImg;
-    pdpImgLeftLabel.textContent = product.macroLabel;
-    pdpImgRightLabel.textContent = product.modelLabel;
+    // Set Single Hero Image & Labels (Macro by default)
+    setPdpMode('macro');
 
     // Set Angles Thumbnails
     if (pdpAnglesBar) {
@@ -893,7 +851,8 @@ document.addEventListener('DOMContentLoaded', () => {
         thumb.addEventListener('click', () => {
           document.querySelectorAll('.angle-thumb').forEach(t => t.classList.remove('active'));
           thumb.classList.add('active');
-          pdpImgLeft.src = angleUrl;
+          if (pdpHeroImg) pdpHeroImg.src = angleUrl;
+          if (pdpImgActiveLabel) pdpImgActiveLabel.textContent = `${product.name} // Calibrated Perspective`;
         });
         pdpAnglesBar.appendChild(thumb);
       });
@@ -1031,16 +990,12 @@ document.addEventListener('DOMContentLoaded', () => {
     loupeZoomImg.style.transform = `translate(${loupePanX}px, ${loupePanY}px) scale(${loupeScale})`;
   }
 
-  // Click on either PDP image triggers Loupe
-  if (pdpImageLeftCol) {
-    pdpImageLeftCol.addEventListener('click', () => {
-      openLoupe(pdpImgLeft.src, `${currentActiveProduct.name} // MACRO CRAFT`);
-    });
-  }
-
-  if (pdpImageRightCol) {
-    pdpImageRightCol.addEventListener('click', () => {
-      openLoupe(pdpImgRight.src, `${currentActiveProduct.name} // EDITORIAL ANATOMY`);
+  // Click on the single hero image triggers Loupe
+  if (pdpHeroImageWrap) {
+    pdpHeroImageWrap.addEventListener('click', () => {
+      if (pdpHeroImg && pdpHeroImg.src) {
+        openLoupe(pdpHeroImg.src, `${currentActiveProduct.name} // FULLSCREEN LOUPE`);
+      }
     });
   }
 
