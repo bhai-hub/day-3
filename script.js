@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
         'assets/images/ring-sardine-macro.jpg'
       ],
       colors: [
-        { name: 'Yellow Gold 18K', color: '#e8c784' },
-        { name: 'White Gold 18K', color: '#e2e4e8' },
-        { name: 'Cold-Forged 950 Platinum', color: '#cfd4d9' },
-        { name: 'Rose Gold 18K', color: '#e5b39b' }
+        { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
+        { name: 'French Gray Patina', color: '#CED4DA' },
+        { name: 'Surgical Grade 5 Titanium', color: '#A7AFB6' },
+        { name: 'Anti-Flash White Finish', color: '#E9ECEF' }
       ],
       sizes: ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'],
       defaultSize: '12',
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ref: 'REF. AN-02',
       name: 'Sea Coral Ring',
       category: 'Rings',
-      colorName: 'Yellow Gold 18K & Satin Patina',
+      colorName: 'Cold-Forged 950 Platinum & Satin Patina',
       macroImg: 'assets/images/ring-sardine-macro.jpg',
       modelImg: 'assets/images/ring-sardine-model.jpg',
       macroLabel: 'Organic Micro-Ridge Architecture',
@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'assets/images/ring-soft-knot-macro.jpg'
       ],
       colors: [
-        { name: 'Yellow Gold 18K', color: '#e8c784' },
-        { name: 'Cold-Forged 950 Platinum', color: '#cfd4d9' }
+        { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
+        { name: 'Surgical Titanium Patina', color: '#A7AFB6' }
       ],
       sizes: ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18'],
       defaultSize: '11',
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ref: 'REF. AN-03',
       name: 'Face Ring',
       category: 'Rings',
-      colorName: 'Yellow Gold 18K with Untreated Carnelian',
+      colorName: 'Cold-Forged 950 Platinum & Mineral Crystal',
       macroImg: 'assets/images/ring-face-macro.jpg',
       modelImg: 'assets/images/ring-face-model.jpg',
       macroLabel: 'Architectural Saddle Frame & Bezel Setting',
@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'assets/images/ring-soft-knot-macro.jpg'
       ],
       colors: [
-        { name: 'Yellow Gold 18K & Carnelian', color: '#b95138' },
-        { name: '950 Platinum & Black Onyx', color: '#1a1a1a' }
+        { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
+        { name: 'French Gray Mineral Tone', color: '#CED4DA' }
       ],
       sizes: ['10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
       defaultSize: '13',
@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'assets/images/editorial-physician-earring.jpg'
       ],
       colors: [
-        { name: 'Sterling Silver 925', color: '#d8dcde' },
-        { name: '18K Yellow Gold & Ivory Enamel', color: '#f3ede1' }
+        { name: 'Sterling Silver 925', color: '#DEE2E6' },
+        { name: 'Anti-Flash White Enamel', color: '#E9ECEF' }
       ],
       sizes: ['Standard Ergonomic'],
       defaultSize: 'Standard Ergonomic',
@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'assets/images/earrings-candy-drop-macro.jpg'
       ],
       colors: [
-        { name: 'Cold-Forged 950 Platinum & Sapphire', color: '#1f3a60' },
-        { name: '18K White Gold & Diamond Halo', color: '#e2e4e8' }
+        { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
+        { name: 'Surgical Titanium Post', color: '#A7AFB6' }
       ],
       sizes: ['Standard Diagnostic'],
       defaultSize: 'Standard Diagnostic',
@@ -153,8 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'assets/images/diamond-bracelet-macro.jpg'
       ],
       colors: [
-        { name: 'Cold-Forged 950 Platinum & Diamonds', color: '#cfd4d9' },
-        { name: 'Grade 5 Surgical Titanium', color: '#888d94' }
+        { name: 'Cold-Forged 950 Platinum & Diamonds', color: '#DEE2E6' },
+        { name: 'Grade 5 Surgical Titanium', color: '#A7AFB6' }
       ],
       sizes: ['15cm', '16cm', '17cm', '18cm', '19cm'],
       defaultSize: '17cm',
@@ -177,8 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'assets/images/bracelet-carpal-macro.jpg'
       ],
       colors: [
-        { name: 'Cold-Forged 950 Platinum', color: '#cfd4d9' },
-        { name: '18K Yellow Gold Torque', color: '#e8c784' }
+        { name: 'Cold-Forged 950 Platinum', color: '#DEE2E6' },
+        { name: 'French Gray Titanium Core', color: '#CED4DA' }
       ],
       sizes: ['38cm Collar', '40cm Collar', '42cm Collar'],
       defaultSize: '40cm Collar',
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'assets/images/hero-physician-ring.jpg'
       ],
       colors: [
-        { name: 'Grade 5 Titanium & White Gold', color: '#cfd4d9' }
+        { name: 'Grade 5 Titanium & White Gold', color: '#DEE2E6' }
       ],
       sizes: ['One Size // Lapel Pin'],
       defaultSize: 'One Size // Lapel Pin',
@@ -612,6 +612,20 @@ document.addEventListener('DOMContentLoaded', () => {
         img: 'assets/images/diamond-bracelet-macro.jpg',
         title: 'Private Atelier Allocation',
         desc: 'Custom Diamond & Platinum Craft'
+      }
+    },
+    'meaning': {
+      left: {
+        prodId: 'soft-knot-ring',
+        img: 'assets/images/hero-physician-ring.jpg',
+        title: 'Mirroring & Belonging',
+        desc: 'Opening directly onto a dignified portrait of a physician creates instant, silent recognition. Deep trust without marketing.'
+      },
+      right: {
+        prodId: 'soft-knot-ring',
+        img: 'assets/images/ring-soft-knot-macro.jpg',
+        title: 'Respect for High Intelligence',
+        desc: 'Elite practitioners dislike being sold to. Ultra-minimalism lets the purity of craftsmanship speak quietly.'
       }
     },
     'anima': {
@@ -1157,7 +1171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ) : all.slice(0, 5);
 
     if (filtered.length === 0) {
-      searchResultsList.innerHTML = `<div style="padding:16px; color:#6C757D; font-size:0.8rem;">No creations found for "${query}". Try searching "Ring", "Knot", or "Sapphire".</div>`;
+      searchResultsList.innerHTML = `<div style="padding:16px; color:#A7AFB6; font-size:0.8rem;">No creations found for "${query}". Try searching "Ring", "Knot", or "Sapphire".</div>`;
       return;
     }
 
@@ -1342,6 +1356,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // =========================================================================
+  // 13.5. THE MEANING & PSYCHOLOGICAL ELEMENTS MODAL
+  // =========================================================================
+  const meaningModal = document.getElementById('meaningModal');
+  const meaningCloseBtn = document.getElementById('meaningCloseBtn');
+  const meaningBackdrop = document.getElementById('meaningBackdrop');
+
+  function openMeaningModal() {
+    if (meaningModal) {
+      meaningModal.classList.add('is-open');
+      meaningModal.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  function closeMeaningModal() {
+    if (meaningModal) {
+      meaningModal.classList.remove('is-open');
+      meaningModal.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  document.querySelectorAll('.open-meaning-link').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+      openMeaningModal();
+    });
+  });
+
+  if (meaningCloseBtn) meaningCloseBtn.addEventListener('click', closeMeaningModal);
+  if (meaningBackdrop) meaningBackdrop.addEventListener('click', closeMeaningModal);
+
   // Miscellaneous Links (Cert, Philosophy, Social, Legal)
   document.querySelectorAll('.open-cert-link').forEach(link => {
     link.addEventListener('click', () => {
@@ -1377,6 +1422,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeCareModal();
     closeCommissionModal();
     closeCountryModal();
+    closeMeaningModal();
     if (productDetailView.classList.contains('is-open')) closeProductDetail();
     if (collectionView.classList.contains('is-open')) closeCollectionView();
   }

@@ -1,24 +1,31 @@
 /* ==========================================================================
    ANIMA / PNEUMA — Haute Joaillerie (PEJ)
    Website UI/UX & Visual Design Specification (Draft 2)
-   Ultra-Minimalism, Spectrum of Whites to Pale Greys, Edge-to-Edge Curtain Overlays
+   Ultra-Minimalism, Pure Spectrum of Whites to Pale Greys (Page 26)
+   STRICT PALETTE ONLY: #F8F9FA, #E9ECEF, #DEE2E6, #CED4DA, #A7AFB6, #FFFFFF
+   EXCLUDED: Black, Beige, and Darker Shades of Grey
    ========================================================================== */
 
-/* --- CSS Variables & Color Spectrum from Specification (Page 25 & 26) --- */
+/* --- Strict Palette Variables --- */
 :root {
   /* Specification Palette (Page 26) */
-  --c-seasalt: #F8F9FA;
-  --c-antiflash: #E9ECEF;
-  --c-platinum: #DEE2E6;
-  --c-frenchgray: #CED4DA;
-  --c-cadetgray: #A7AFB6;
+  --c-seasalt: #F8F9FA;      /* Seasalt */
+  --c-antiflash: #E9ECEF;    /* Anti-flash white */
+  --c-platinum: #DEE2E6;     /* Platinum */
+  --c-frenchgray: #CED4DA;   /* French gray */
+  --c-cadetgray: #A7AFB6;    /* Cadet gray (Deepest allowed tone) */
+  --c-white: #FFFFFF;        /* Pure white */
   
-  /* Additional Contrast & Tone Values */
-  --c-white: #FFFFFF;
-  --c-dark-charcoal: #121316;
-  --c-soft-black: #1A1B1E;
-  --c-muted-slate: #6C757D;
-  --c-subtle-border: #E2E5E9;
+  /* Semantic Tokens */
+  --c-bg: var(--c-seasalt);
+  --c-surface: var(--c-antiflash);
+  --c-card: var(--c-white);
+  --c-border: var(--c-platinum);
+  --c-border-focus: var(--c-cadetgray);
+  --c-text-main: var(--c-cadetgray);
+  --c-text-sub: var(--c-frenchgray);
+  --c-interactive: var(--c-cadetgray);
+  --c-interactive-hover: var(--c-frenchgray);
   
   /* Typography */
   --font-serif: "Cormorant Garamond", Georgia, serif;
@@ -43,13 +50,14 @@ html, body {
   width: 100vw;
   height: 100vh;
   height: 100dvh;
-  overflow: hidden; /* Bottega Veneta Curtain Deck controls scrolling */
+  overflow: hidden;
   background-color: var(--c-seasalt);
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   font-family: var(--font-sans);
   font-size: 14px;
   line-height: 1.5;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  font-weight: 450;
 }
 
 button {
@@ -104,21 +112,22 @@ body:not(.is-loading) .preloader {
   font-family: var(--font-sans);
   font-size: 1.15rem;
   letter-spacing: 0.45em;
-  font-weight: 400;
-  color: var(--c-dark-charcoal);
+  font-weight: 500;
+  color: var(--c-cadetgray);
   text-transform: uppercase;
 }
 
 .brand-divider {
-  color: var(--c-cadetgray);
+  color: var(--c-platinum);
   margin: 0 4px;
 }
 
 .preloader-sub {
   font-size: 0.65rem;
   letter-spacing: 0.35em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .preloader-progress {
@@ -136,15 +145,13 @@ body:not(.is-loading) .preloader {
   left: 0;
   height: 100%;
   width: 0%;
-  background: var(--c-dark-charcoal);
+  background: var(--c-cadetgray);
   transition: width 0.3s ease-out;
 }
 
 /* ==========================================================================
    FLOATING TRANSPARENT HEADER (Page 1, 6, 7)
-   "A completely transparent header floating over the edge-to-edge image.
-   It holds only the brand name/logo paired with a minimal typography.
-   Removing search bars, announcements, and promo banners eliminates cognitive overload."
+   Transparent, holds only Explore and brand name, zero cognitive overload
    ========================================================================== */
 .site-header {
   position: fixed;
@@ -157,41 +164,34 @@ body:not(.is-loading) .preloader {
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  pointer-events: none; /* Allows click-through to underlying frame where transparent */
-  transition: color 0.5s ease, background 0.5s ease;
+  pointer-events: none;
+  color: var(--c-cadetgray);
+  transition: color 0.5s ease;
 }
 
 .site-header > * {
   pointer-events: auto;
 }
 
-/* Header dynamic theme adaptation based on current frame */
-.site-header[data-theme="dark"] {
-  color: var(--c-white);
-}
-
-.site-header[data-theme="light"] {
-  color: var(--c-dark-charcoal);
-}
-
-/* Left: Single word "Explore" (Page 6: "Only the single word Explore sits quietly in the top-left corner") */
+/* Left: Single word "Explore" */
 .explore-btn {
   position: relative;
   font-size: 0.82rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   padding: 6px 0;
   display: inline-flex;
   flex-direction: column;
+  color: var(--c-cadetgray);
 }
 
 /* The Ordinary Hover Underline Effect (Page 22 & 23) */
 .nav-underline-bar {
   display: block;
   width: 0;
-  height: 1px;
-  background-color: currentColor;
+  height: 1.5px;
+  background-color: var(--c-cadetgray);
   margin-top: 4px;
   transition: width 0.35s var(--ease-underline);
 }
@@ -200,59 +200,55 @@ body:not(.is-loading) .preloader {
   width: 100%;
 }
 
-/* Center: Brand Name / Minimal Typography */
+/* Center: Brand Name */
 .site-logo {
   font-size: 1.15rem;
-  letter-spacing: 0.38em;
-  font-weight: 400;
+  letter-spacing: 0.4em;
+  font-weight: 500;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  color: var(--c-cadetgray);
   transition: opacity 0.3s ease;
 }
 
 .site-logo:hover {
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
 .logo-sep {
-  opacity: 0.5;
-  font-size: 0.95em;
+  color: var(--c-platinum);
+  font-size: 0.9em;
 }
 
-/* Right: Subtle View Pill (Quick switch to 2-column collection view) */
+/* Right: Subtle View Pill */
 .header-view-pill {
   font-size: 0.68rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
+  font-weight: 500;
   padding: 6px 14px;
-  border: 1px solid currentColor;
-  opacity: 0.8;
+  border: 1px solid var(--c-platinum);
+  color: var(--c-cadetgray);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  background-color: rgba(248, 249, 250, 0.7);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
 }
 
 .header-view-pill:hover {
-  opacity: 1;
-  background-color: currentColor;
-}
-
-.header-view-pill:hover span {
-  color: var(--c-seasalt);
-}
-
-.site-header[data-theme="dark"] .header-view-pill:hover span {
-  color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
+  background-color: var(--c-antiflash);
 }
 
 .pill-dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: currentColor;
+  background-color: var(--c-cadetgray);
 }
 
 /* ==========================================================================
@@ -273,12 +269,12 @@ body:not(.is-loading) .preloader {
 .curtain-dot {
   font-size: 0.65rem;
   letter-spacing: 0.15em;
-  color: var(--c-cadetgray);
-  opacity: 0.45;
+  color: var(--c-frenchgray);
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .curtain-dot::before {
@@ -286,33 +282,28 @@ body:not(.is-loading) .preloader {
   display: inline-block;
   width: 14px;
   height: 1px;
-  background-color: currentColor;
-  transition: width 0.3s ease;
+  background-color: var(--c-platinum);
+  transition: all 0.3s ease;
 }
 
 .curtain-dot:hover {
-  opacity: 0.85;
+  color: var(--c-cadetgray);
   transform: translateX(-4px);
 }
 
 .curtain-dot.active {
-  opacity: 1;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
+  font-weight: 600;
   transform: translateX(-6px);
-}
-
-.site-header[data-theme="dark"] ~ .curtain-pagination .curtain-dot.active {
-  color: var(--c-white);
 }
 
 .curtain-dot.active::before {
   width: 28px;
+  background-color: var(--c-cadetgray);
 }
 
 /* ==========================================================================
    CURTAIN OVERLAY DECK (HOME PAGE STACK — Inspired by Bottega Veneta)
-   Page 4 & 5: "As the user scrolls, Frame 1 stays locked in place while
-   Frame 2 slides smoothly upward over it, covering it completely from edge to edge."
    ========================================================================== */
 .curtain-deck {
   position: relative;
@@ -330,25 +321,22 @@ body:not(.is-loading) .preloader {
   height: 100dvh;
   overflow: hidden;
   will-change: transform;
-  transform: translateY(100%); /* Parked below ready to slide up */
+  transform: translateY(100%);
   transition: transform 1.05s var(--ease-curtain);
   background-color: var(--c-seasalt);
 }
 
-/* Active frame: completely in view */
 .curtain-frame.is-active {
   transform: translateY(0%);
   z-index: 10;
 }
 
-/* Past frames: pinned underneath, subtle scale down for couture depth */
 .curtain-frame.is-past {
   transform: translateY(0%) scale(0.985);
   transition: transform 1.05s var(--ease-curtain);
   z-index: 5;
 }
 
-/* Frame media wrapper */
 .frame-media-wrap {
   position: absolute;
   inset: 0;
@@ -375,14 +363,14 @@ body:not(.is-loading) .preloader {
 .contrast-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0,0,0,0) 45%, rgba(0,0,0,0.65) 100%);
+  background: radial-gradient(circle at center, rgba(248,249,250,0) 50%, rgba(206,212,218,0.2) 100%);
   pointer-events: none;
 }
 
 .video-overlay-tint {
   position: absolute;
   inset: 0;
-  background-color: rgba(18, 19, 22, 0.25);
+  background-color: rgba(233, 236, 239, 0.2);
   pointer-events: none;
 }
 
@@ -397,19 +385,19 @@ body:not(.is-loading) .preloader {
   align-items: center;
   gap: 8px;
   z-index: 20;
-  color: var(--c-white);
-  opacity: 0.65;
+  color: var(--c-cadetgray);
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
 
 .curtain-scroll-hint:hover {
-  opacity: 1;
+  color: var(--c-white);
 }
 
 .hint-text {
   font-size: 0.62rem;
   letter-spacing: 0.35em;
+  font-weight: 500;
 }
 
 .hint-hairline {
@@ -420,15 +408,13 @@ body:not(.is-loading) .preloader {
 }
 
 @keyframes pulseLine {
-  0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
+  0%, 100% { transform: scaleY(0.4); opacity: 0.4; }
   50% { transform: scaleY(1); opacity: 1; }
 }
 
 /* ==========================================================================
    QUIET PALE-GRAY REFERENCE TAG (Page 5 & 6)
-   "No price tags, descriptions, or 'Buy' buttons clutter the frame.
-   Tapping or hovering on the piece reveals a quiet, pale-gray reference tag
-   to view details or commission."
+   Strictly pale greys: #F8F9FA, #E9ECEF, #DEE2E6, #A7AFB6
    ========================================================================== */
 .quiet-ref-tag {
   position: absolute;
@@ -439,20 +425,18 @@ body:not(.is-loading) .preloader {
   align-items: center;
   gap: 24px;
   padding: 16px 24px;
-  background-color: rgba(248, 249, 250, 0.88);
+  background-color: rgba(248, 249, 250, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--c-platinum);
-  color: var(--c-dark-charcoal);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  opacity: 0.85;
-  transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.35s ease;
+  color: var(--c-cadetgray);
+  box-shadow: 0 10px 30px rgba(167, 175, 182, 0.12);
+  transition: all 0.35s ease;
   cursor: pointer;
 }
 
 .quiet-ref-tag:hover {
-  opacity: 1;
-  background-color: rgba(255, 255, 255, 0.98);
+  background-color: var(--c-white);
   transform: translateY(-2px);
   border-color: var(--c-cadetgray);
 }
@@ -466,21 +450,23 @@ body:not(.is-loading) .preloader {
 .tag-ref-code {
   font-size: 0.62rem;
   letter-spacing: 0.25em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .tag-title {
   font-family: var(--font-sans);
   font-size: 0.88rem;
-  letter-spacing: 0.18em;
-  font-weight: 500;
+  letter-spacing: 0.2em;
+  font-weight: 600;
   text-transform: uppercase;
+  color: var(--c-cadetgray);
 }
 
 .tag-meta {
   font-size: 0.72rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   letter-spacing: 0.05em;
 }
 
@@ -488,24 +474,26 @@ body:not(.is-loading) .preloader {
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 8px 14px;
-  background: var(--c-dark-charcoal);
+  font-weight: 600;
+  padding: 8px 16px;
+  background: var(--c-cadetgray);
   color: var(--c-white);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: 1px solid var(--c-cadetgray);
+  transition: all 0.3s ease;
 }
 
 .tag-action-btn:hover {
-  background-color: #000;
+  background-color: var(--c-frenchgray);
+  border-color: var(--c-frenchgray);
   transform: translateX(2px);
 }
 
 /* ==========================================================================
    LOWEST FRAME OF THE WEBSITE (Page 25: Bottega Veneta Luxury Minimal Footer)
-   "Scroll down the Frames on the Home Page and go to the lowest frame."
    ========================================================================== */
 .lowest-frame {
   background-color: var(--c-seasalt);
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -515,7 +503,7 @@ body:not(.is-loading) .preloader {
   width: 100%;
   max-width: 1320px;
   height: 100%;
-  padding: 100px 48px 48px;
+  padding: 90px 48px 48px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -525,40 +513,44 @@ body:not(.is-loading) .preloader {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  padding-bottom: 48px;
+  padding-bottom: 40px;
   border-bottom: 1px solid var(--c-platinum);
 }
 
 .lowest-col .col-heading {
   font-size: 0.75rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.25em;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 12px;
+  color: var(--c-cadetgray);
 }
 
 .lowest-col .col-text {
   font-size: 0.85rem;
-  line-height: 1.65;
-  color: var(--c-muted-slate);
-  max-width: 460px;
+  line-height: 1.7;
+  color: var(--c-frenchgray);
+  max-width: 480px;
   margin-bottom: 18px;
 }
 
 .hairline-link-btn {
   font-size: 0.75rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
+  font-weight: 500;
   text-transform: uppercase;
   padding-bottom: 4px;
-  border-bottom: 1px solid currentColor;
-  transition: opacity 0.3s ease;
+  border-bottom: 1px solid var(--c-platinum);
+  color: var(--c-cadetgray);
+  transition: all 0.3s ease;
 }
 
 .hairline-link-btn:hover {
-  opacity: 0.7;
+  border-color: var(--c-cadetgray);
+  color: var(--c-cadetgray);
 }
 
-/* Newsletter Single Hairline Input (Page 25) */
+/* Newsletter Single Hairline Input */
 .hairline-newsletter-form {
   position: relative;
   max-width: 440px;
@@ -567,13 +559,13 @@ body:not(.is-loading) .preloader {
 .newsletter-input-group {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--c-cadetgray);
+  border-bottom: 1px solid var(--c-platinum);
   padding: 8px 0;
   transition: border-color 0.3s ease;
 }
 
 .newsletter-input-group:focus-within {
-  border-color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
 }
 
 .newsletter-input-group input {
@@ -584,13 +576,17 @@ body:not(.is-loading) .preloader {
   font-family: inherit;
   font-size: 0.88rem;
   letter-spacing: 0.05em;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
+}
+
+.newsletter-input-group input::placeholder {
+  color: var(--c-frenchgray);
 }
 
 .newsletter-submit-btn {
   font-size: 1.1rem;
   padding: 0 8px;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   transition: transform 0.2s ease;
 }
 
@@ -600,8 +596,8 @@ body:not(.is-loading) .preloader {
 
 .newsletter-confirmation {
   display: none;
-  font-size: 0.72rem;
-  color: #2b7a4b;
+  font-size: 0.75rem;
+  color: var(--c-cadetgray);
   margin-top: 8px;
   letter-spacing: 0.05em;
 }
@@ -610,12 +606,12 @@ body:not(.is-loading) .preloader {
   display: block;
 }
 
-/* Middle 4-Column Clean Links (Page 25) */
+/* Middle 4-Column Clean Links */
 .lowest-links-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
-  padding: 48px 0;
+  padding: 40px 0;
   border-bottom: 1px solid var(--c-platinum);
 }
 
@@ -625,7 +621,7 @@ body:not(.is-loading) .preloader {
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 16px;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .footer-block .block-list {
@@ -637,13 +633,13 @@ body:not(.is-loading) .preloader {
 
 .footer-block .block-list a {
   font-size: 0.8rem;
-  color: var(--c-muted-slate);
-  letter-spacing: 0.03em;
+  color: var(--c-frenchgray);
+  letter-spacing: 0.04em;
   transition: color 0.3s ease;
 }
 
 .footer-block .block-list a:hover {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 /* Bottom Bar */
@@ -653,7 +649,7 @@ body:not(.is-loading) .preloader {
   justify-content: space-between;
   padding-top: 24px;
   font-size: 0.72rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   letter-spacing: 0.08em;
 }
 
@@ -666,28 +662,26 @@ body:not(.is-loading) .preloader {
 }
 
 .country-selector:hover {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .back-to-top-btn {
   font-size: 0.68rem;
   letter-spacing: 0.2em;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border: 1px solid var(--c-platinum);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  color: var(--c-cadetgray);
+  background-color: var(--c-white);
+  transition: all 0.3s ease;
 }
 
 .back-to-top-btn:hover {
-  border-color: var(--c-dark-charcoal);
-  color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
+  background-color: var(--c-antiflash);
 }
 
 /* ==========================================================================
    INSIDE THE MENU (Page 7, 8, 22, 23, 24)
-   "Different options, side by side should be layed out in a horizontal manner.
-   Options like: Bespoke, Collection, Anima, Pneuma.
-   And, by hovering the cursor on these options these options show the items
-   appearing on the screen. Like this: (two large images in one row)"
    ========================================================================== */
 .menu-overlay {
   position: fixed;
@@ -706,8 +700,8 @@ body:not(.is-loading) .preloader {
 .menu-backdrop {
   position: absolute;
   inset: 0;
-  background-color: rgba(18, 19, 22, 0.45);
-  backdrop-filter: blur(6px);
+  background-color: rgba(233, 236, 239, 0.6);
+  backdrop-filter: blur(8px);
 }
 
 .menu-panel {
@@ -718,7 +712,7 @@ body:not(.is-loading) .preloader {
   height: 100vh;
   height: 100dvh;
   background-color: var(--c-seasalt);
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   display: flex;
   flex-direction: column;
   padding: 32px 64px 32px;
@@ -742,18 +736,21 @@ body:not(.is-loading) .preloader {
 .menu-brand-tag {
   font-size: 0.68rem;
   letter-spacing: 0.28em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .menu-close-btn {
   font-size: 1.2rem;
   padding: 8px;
-  transition: transform 0.3s ease;
+  color: var(--c-cadetgray);
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .menu-close-btn:hover {
   transform: rotate(90deg);
+  color: var(--c-frenchgray);
 }
 
 /* Horizontal Menu Options (Page 7 & 22) */
@@ -772,17 +769,17 @@ body:not(.is-loading) .preloader {
 .menu-tab-btn {
   position: relative;
   font-size: 1.15rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-weight: 400;
-  color: var(--c-muted-slate);
+  font-weight: 500;
+  color: var(--c-frenchgray);
   padding: 8px 4px;
   transition: color 0.3s ease;
 }
 
 .menu-tab-btn:hover,
 .menu-tab-btn.active {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 /* The Ordinary Inspired Underline (Page 22 & 23) */
@@ -792,7 +789,7 @@ body:not(.is-loading) .preloader {
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: var(--c-dark-charcoal);
+  background-color: var(--c-cadetgray);
   transition: width 0.35s var(--ease-underline);
 }
 
@@ -816,14 +813,14 @@ body:not(.is-loading) .preloader {
   text-transform: uppercase;
   padding: 4px 12px;
   border-radius: 20px;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   border: 1px solid transparent;
   transition: all 0.25s ease;
 }
 
 .subnav-pill:hover,
 .subnav-pill.active {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   border-color: var(--c-platinum);
   background-color: var(--c-white);
 }
@@ -854,7 +851,7 @@ body:not(.is-loading) .preloader {
 .preview-card:hover {
   transform: translateY(-4px);
   border-color: var(--c-cadetgray);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 16px 36px rgba(167, 175, 182, 0.1);
 }
 
 .preview-img-wrap {
@@ -881,16 +878,18 @@ body:not(.is-loading) .preloader {
 }
 
 .preview-title {
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.16em;
+  font-weight: 600;
   text-transform: uppercase;
+  color: var(--c-cadetgray);
 }
 
 .preview-desc {
   font-size: 0.75rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   letter-spacing: 0.04em;
+  line-height: 1.6;
 }
 
 .menu-cta-wrap {
@@ -899,21 +898,24 @@ body:not(.is-loading) .preloader {
 }
 
 .menu-view-all-btn {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 10px 24px;
-  background: var(--c-dark-charcoal);
+  font-weight: 600;
+  padding: 12px 28px;
+  background: var(--c-cadetgray);
   color: var(--c-white);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: 1px solid var(--c-cadetgray);
+  transition: all 0.3s ease;
 }
 
 .menu-view-all-btn:hover {
-  background-color: #000;
+  background-color: var(--c-frenchgray);
+  border-color: var(--c-frenchgray);
   transform: translateY(-1px);
 }
 
-/* Bottom Utility Options within Menu (Page 24: Search, Login, Customer Care, Your Country) */
+/* Bottom Utility Options within Menu (Page 24) */
 .menu-bottom-utility {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -929,31 +931,30 @@ body:not(.is-loading) .preloader {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .utility-btn:hover {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .u-icon {
   font-size: 1.1em;
-  opacity: 0.8;
+  color: var(--c-cadetgray);
 }
 
 /* ==========================================================================
    COLLECTION VIEW ("WHAT WE WANT" — Page 8, 10, 11, 12)
-   "WHAT WE WANT: See how large images are shown. We can include two Images
-   in one row, instead of three. One product completely covering the frame,
-   alternating with model."
+   2 large images per row, pale greys only
    ========================================================================== */
 .collection-view-overlay {
   position: fixed;
   inset: 0;
   z-index: 1500;
   background-color: var(--c-seasalt);
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   overflow-y: auto;
   overflow-x: hidden;
   visibility: hidden;
@@ -968,7 +969,6 @@ body:not(.is-loading) .preloader {
   transform: translateY(0%);
 }
 
-/* Sticky top filter bar (Page 10, 11) */
 .collection-sticky-bar {
   position: sticky;
   top: 0;
@@ -993,19 +993,21 @@ body:not(.is-loading) .preloader {
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .back-to-curtain-btn:hover {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .collection-title-badge {
   font-size: 1.05rem;
-  letter-spacing: 0.18em;
-  font-weight: 400;
+  letter-spacing: 0.2em;
+  font-weight: 500;
   text-transform: uppercase;
+  color: var(--c-cadetgray);
 }
 
 .collection-filter-pills {
@@ -1019,24 +1021,24 @@ body:not(.is-loading) .preloader {
   font-size: 0.8rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   padding: 6px 2px;
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .col-filter-pill:hover,
 .col-filter-pill.active {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
-/* The Ordinary underline for collection filter */
 .cat-underline {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: var(--c-dark-charcoal);
+  background-color: var(--c-cadetgray);
   transition: width 0.3s var(--ease-underline);
 }
 
@@ -1054,7 +1056,8 @@ body:not(.is-loading) .preloader {
 .product-counter {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
+  font-weight: 500;
 }
 
 .filter-sort-btn {
@@ -1063,14 +1066,15 @@ body:not(.is-loading) .preloader {
   text-transform: uppercase;
   padding: 6px 14px;
   border: 1px solid var(--c-platinum);
-  transition: border-color 0.3s ease;
+  color: var(--c-cadetgray);
+  background-color: var(--c-white);
+  transition: all 0.3s ease;
 }
 
 .filter-sort-btn:hover {
-  border-color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
 }
 
-/* Quick Sort Drawer */
 .filter-sort-drawer {
   display: none;
   background-color: var(--c-antiflash);
@@ -1091,7 +1095,8 @@ body:not(.is-loading) .preloader {
 .sort-label {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
+  font-weight: 500;
 }
 
 .sort-opt-btn {
@@ -1099,13 +1104,14 @@ body:not(.is-loading) .preloader {
   letter-spacing: 0.1em;
   padding: 4px 10px;
   border: 1px solid transparent;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
+  transition: all 0.25s ease;
 }
 
 .sort-opt-btn.active {
   border-color: var(--c-platinum);
   background-color: var(--c-white);
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 /* Two Column Grid ("WHAT WE WANT" — Page 8 & 10) */
@@ -1127,7 +1133,7 @@ body:not(.is-loading) .preloader {
   flex-direction: column;
   cursor: pointer;
   background-color: var(--c-white);
-  border: 1px solid var(--c-subtle-border);
+  border: 1px solid var(--c-platinum);
   padding: 24px;
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
@@ -1135,7 +1141,7 @@ body:not(.is-loading) .preloader {
 .collection-product-card:hover {
   transform: translateY(-4px);
   border-color: var(--c-cadetgray);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 18px 40px rgba(167, 175, 182, 0.12);
 }
 
 .card-media-wrap {
@@ -1161,13 +1167,13 @@ body:not(.is-loading) .preloader {
   font-size: 0.6rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  background: rgba(248, 249, 250, 0.9);
+  background: rgba(248, 249, 250, 0.92);
   padding: 4px 8px;
   border: 1px solid var(--c-platinum);
-  color: var(--c-muted-slate);
+  color: var(--c-cadetgray);
+  font-weight: 500;
 }
 
-/* Subtle Product Name Caption (Page 10, 11, 12: Only item name shown below) */
 .card-caption-row {
   margin-top: 18px;
   display: flex;
@@ -1177,21 +1183,21 @@ body:not(.is-loading) .preloader {
 
 .card-product-name {
   font-size: 0.88rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   font-weight: 500;
   text-transform: uppercase;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .card-arrow {
   font-size: 0.95rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .collection-product-card:hover .card-arrow {
   transform: translateX(4px);
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .collection-footer {
@@ -1213,26 +1219,25 @@ body:not(.is-loading) .preloader {
 .cf-brand {
   font-size: 0.85rem;
   letter-spacing: 0.3em;
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--c-cadetgray);
 }
 
 .cf-text {
   font-size: 0.82rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
+  line-height: 1.6;
 }
 
 /* ==========================================================================
    PRODUCT DETAIL VIEW (Page 13, 14, 15, 16, 17, 18, 19, 20, 21, 22)
-   Top: Two large side-by-side images (Product macro + Model beside it)
-   Clickable images expand into Fullscreen Interactive Zoom & Pan!
-   Below: Name, Color name, Size selector, Size Guide link, Vertical details, Gift packaging
    ========================================================================== */
 .product-detail-view {
   position: fixed;
   inset: 0;
   z-index: 1800;
   background-color: var(--c-seasalt);
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   overflow-y: auto;
   overflow-x: hidden;
   visibility: hidden;
@@ -1265,29 +1270,31 @@ body:not(.is-loading) .preloader {
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .pdp-back-btn:hover {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .pdp-brand-logo {
   font-size: 0.95rem;
   letter-spacing: 0.3em;
   font-weight: 500;
+  color: var(--c-cadetgray);
 }
 
 .pdp-close-btn {
   font-size: 1.2rem;
   padding: 6px;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .pdp-close-btn:hover {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   transform: rotate(90deg);
 }
 
@@ -1340,28 +1347,29 @@ body:not(.is-loading) .preloader {
   font-size: 0.62rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  font-weight: 500;
   padding: 6px 12px;
-  background-color: rgba(248, 249, 250, 0.9);
+  background-color: rgba(248, 249, 250, 0.92);
   backdrop-filter: blur(8px);
   border: 1px solid var(--c-platinum);
-  color: var(--c-dark-charcoal);
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
+  color: var(--c-cadetgray);
+  transition: all 0.3s ease;
 }
 
 .pdp-image-col:hover .zoom-cue-pill {
-  opacity: 1;
+  background-color: var(--c-white);
+  border-color: var(--c-cadetgray);
 }
 
 .image-sub-label {
   margin-top: 10px;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   text-transform: uppercase;
+  font-weight: 500;
 }
 
-/* Angles Switcher */
 .pdp-angles-bar {
   display: flex;
   align-items: center;
@@ -1381,10 +1389,10 @@ body:not(.is-loading) .preloader {
 }
 
 .angle-thumb.active {
-  border-color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
 }
 
-/* Details Below the Images (Page 20: Name, Color name, Size selector, Size Guide link) */
+/* Details Below the Images (Page 20) */
 .pdp-info-section {
   max-width: 780px;
   margin: 0 auto;
@@ -1399,22 +1407,24 @@ body:not(.is-loading) .preloader {
 .pdp-ref-code {
   font-size: 0.68rem;
   letter-spacing: 0.25em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .pdp-title {
   font-family: var(--font-sans);
   font-size: 1.4rem;
-  letter-spacing: 0.18em;
-  font-weight: 500;
+  letter-spacing: 0.2em;
+  font-weight: 600;
   text-transform: uppercase;
   margin: 6px 0;
+  color: var(--c-cadetgray);
 }
 
 .pdp-color-name {
   font-size: 0.88rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   letter-spacing: 0.08em;
 }
 
@@ -1432,7 +1442,7 @@ body:not(.is-loading) .preloader {
   border: 2px solid var(--c-seasalt);
   box-shadow: 0 0 0 1px var(--c-platinum);
   cursor: pointer;
-  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .swatch-btn:hover {
@@ -1440,7 +1450,7 @@ body:not(.is-loading) .preloader {
 }
 
 .swatch-btn.active {
-  box-shadow: 0 0 0 2px var(--c-dark-charcoal);
+  box-shadow: 0 0 0 2px var(--c-cadetgray);
 }
 
 /* Size Selection & Size Guide Link (Page 20) */
@@ -1463,15 +1473,17 @@ body:not(.is-loading) .preloader {
   letter-spacing: 0.2em;
   font-weight: 600;
   text-transform: uppercase;
+  color: var(--c-cadetgray);
 }
 
 .size-guide-trigger-btn {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px;
+  font-weight: 500;
   transition: opacity 0.3s ease;
 }
 
@@ -1495,27 +1507,30 @@ body:not(.is-loading) .preloader {
   border: 1px solid var(--c-platinum);
   background-color: var(--c-seasalt);
   font-size: 0.82rem;
+  color: var(--c-cadetgray);
+  font-weight: 500;
   transition: all 0.25s ease;
 }
 
 .size-pill:hover {
   border-color: var(--c-cadetgray);
+  background-color: var(--c-antiflash);
 }
 
 .size-pill.active {
-  background-color: var(--c-dark-charcoal);
+  background-color: var(--c-cadetgray);
   color: var(--c-white);
-  border-color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
 }
 
 .size-selected-hint {
   display: block;
   font-size: 0.72rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   letter-spacing: 0.05em;
 }
 
-/* Vertical Product Details & Gift Packaging (Page 22: Placed vertically) */
+/* Vertical Product Details & Gift Packaging (Page 22) */
 .pdp-vertical-specs {
   display: flex;
   flex-direction: column;
@@ -1543,11 +1558,12 @@ body:not(.is-loading) .preloader {
   letter-spacing: 0.2em;
   font-weight: 600;
   text-transform: uppercase;
+  color: var(--c-cadetgray);
 }
 
 .acc-toggle {
   font-size: 1.1rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
 }
 
 .spec-accordion-body {
@@ -1555,14 +1571,14 @@ body:not(.is-loading) .preloader {
   display: none;
   font-size: 0.85rem;
   line-height: 1.7;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
 }
 
 .spec-accordion.is-open .spec-accordion-body {
   display: block;
 }
 
-/* Gift Packaging Card (Page 22) */
+/* Gift Packaging Card */
 .gift-packaging-card {
   padding: 16px;
   background-color: var(--c-seasalt);
@@ -1575,7 +1591,7 @@ body:not(.is-loading) .preloader {
   gap: 12px;
   cursor: pointer;
   font-weight: 500;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   font-size: 0.82rem;
   letter-spacing: 0.04em;
 }
@@ -1587,15 +1603,15 @@ body:not(.is-loading) .preloader {
 .gift-check-custom {
   width: 18px;
   height: 18px;
-  border: 1px solid var(--c-cadetgray);
+  border: 1px solid var(--c-frenchgray);
   background-color: var(--c-white);
   position: relative;
   transition: all 0.25s ease;
 }
 
 .gift-checkbox-label input:checked + .gift-check-custom {
-  background-color: var(--c-dark-charcoal);
-  border-color: var(--c-dark-charcoal);
+  background-color: var(--c-cadetgray);
+  border-color: var(--c-cadetgray);
 }
 
 .gift-checkbox-label input:checked + .gift-check-custom::after {
@@ -1605,14 +1621,14 @@ body:not(.is-loading) .preloader {
   left: 50%;
   transform: translate(-50%, -50%);
   color: var(--c-white);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .gift-desc {
   margin-top: 10px;
   font-size: 0.78rem;
   line-height: 1.6;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
 }
 
 /* PDP Action Buttons */
@@ -1625,49 +1641,50 @@ body:not(.is-loading) .preloader {
 
 .btn-primary-commission {
   padding: 18px;
-  background-color: var(--c-dark-charcoal);
+  background-color: var(--c-cadetgray);
   color: var(--c-white);
   font-size: 0.78rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-weight: 500;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+  border: 1px solid var(--c-cadetgray);
+  transition: all 0.3s ease;
 }
 
 .btn-primary-commission:hover {
-  background-color: #000;
+  background-color: var(--c-frenchgray);
+  border-color: var(--c-frenchgray);
   transform: translateY(-2px);
 }
 
 .btn-secondary-verify {
   padding: 16px;
-  background-color: transparent;
-  color: var(--c-dark-charcoal);
-  border: 1px solid var(--c-dark-charcoal);
+  background-color: var(--c-white);
+  color: var(--c-cadetgray);
+  border: 1px solid var(--c-platinum);
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .btn-secondary-verify:hover {
-  background-color: var(--c-dark-charcoal);
-  color: var(--c-white);
+  border-color: var(--c-cadetgray);
+  background-color: var(--c-antiflash);
 }
 
 .confidential-seal {
   text-align: center;
   font-size: 0.65rem;
   letter-spacing: 0.2em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   text-transform: uppercase;
   margin-top: 6px;
 }
 
 /* ==========================================================================
    FULLSCREEN ZOOM & PAN MODAL (Page 14, 16, 17, 18, 19)
-   "And, when you click on a single picture it takes over the whole screen
-   and you can zoom in and zoom out of it."
    ========================================================================== */
 .fullscreen-loupe-modal {
   position: fixed;
@@ -1702,13 +1719,14 @@ body:not(.is-loading) .preloader {
   letter-spacing: 0.25em;
   font-weight: 600;
   text-transform: uppercase;
+  color: var(--c-cadetgray);
   display: block;
 }
 
 .loupe-hint {
   font-size: 0.68rem;
   letter-spacing: 0.12em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
 }
 
 .loupe-buttons {
@@ -1727,15 +1745,14 @@ body:not(.is-loading) .preloader {
   border: 1px solid var(--c-platinum);
   background-color: var(--c-white);
   font-size: 1.1rem;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   transition: all 0.2s ease;
 }
 
 .loupe-tool-btn:hover,
 .loupe-close-btn:hover {
-  background-color: var(--c-dark-charcoal);
-  color: var(--c-white);
-  border-color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
+  background-color: var(--c-antiflash);
 }
 
 .loupe-stage {
@@ -1785,8 +1802,8 @@ body:not(.is-loading) .preloader {
 .size-guide-backdrop {
   position: absolute;
   inset: 0;
-  background-color: rgba(18, 19, 22, 0.4);
-  backdrop-filter: blur(4px);
+  background-color: rgba(233, 236, 239, 0.6);
+  backdrop-filter: blur(6px);
 }
 
 .size-guide-panel {
@@ -1798,11 +1815,11 @@ body:not(.is-loading) .preloader {
   max-width: 680px;
   max-height: 90vh;
   background-color: var(--c-white);
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   border: 1px solid var(--c-platinum);
   padding: 36px 40px;
   overflow-y: auto;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 24px 60px rgba(167, 175, 182, 0.15);
   transition: transform 0.4s var(--ease-smooth);
 }
 
@@ -1821,18 +1838,19 @@ body:not(.is-loading) .preloader {
 .sg-heading {
   font-size: 0.88rem;
   letter-spacing: 0.25em;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
+  color: var(--c-cadetgray);
 }
 
 .sg-close-btn {
   font-size: 1.3rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   transition: color 0.25s ease;
 }
 
 .sg-close-btn:hover {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .sg-tabs-bar {
@@ -1840,7 +1858,7 @@ body:not(.is-loading) .preloader {
   align-items: center;
   gap: 32px;
   padding: 20px 0 16px;
-  border-bottom: 1px solid var(--c-subtle-border);
+  border-bottom: 1px solid var(--c-platinum);
 }
 
 .sg-tab-btn {
@@ -1848,13 +1866,14 @@ body:not(.is-loading) .preloader {
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   padding: 6px 2px;
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .sg-tab-btn.active {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .sg-tab-underline {
@@ -1863,7 +1882,7 @@ body:not(.is-loading) .preloader {
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: var(--c-dark-charcoal);
+  background-color: var(--c-cadetgray);
   transition: width 0.3s var(--ease-underline);
 }
 
@@ -1887,7 +1906,7 @@ body:not(.is-loading) .preloader {
   margin-bottom: 20px;
   font-size: 0.72rem;
   letter-spacing: 0.15em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
 }
 
 .sg-category-select-wrap select {
@@ -1896,6 +1915,7 @@ body:not(.is-loading) .preloader {
   background: var(--c-seasalt);
   font-family: inherit;
   font-size: 0.8rem;
+  color: var(--c-cadetgray);
   outline: none;
 }
 
@@ -1916,14 +1936,16 @@ body:not(.is-loading) .preloader {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   border-bottom: 1px solid var(--c-platinum);
-  color: var(--c-muted-slate);
+  color: var(--c-cadetgray);
   background-color: var(--c-seasalt);
+  font-weight: 600;
 }
 
 .sg-table td {
   padding: 10px 14px;
-  border-bottom: 1px solid var(--c-subtle-border);
+  border-bottom: 1px solid var(--c-platinum);
   letter-spacing: 0.05em;
+  color: var(--c-cadetgray);
 }
 
 .sg-table tr:hover td {
@@ -1945,6 +1967,7 @@ body:not(.is-loading) .preloader {
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--c-cadetgray);
 }
 
 .measure-steps {
@@ -1954,11 +1977,11 @@ body:not(.is-loading) .preloader {
   gap: 14px;
   font-size: 0.82rem;
   line-height: 1.6;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
 }
 
 .measure-steps strong {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .sg-concierge-callout {
@@ -1968,7 +1991,42 @@ body:not(.is-loading) .preloader {
   border: 1px solid var(--c-platinum);
   font-size: 0.75rem;
   letter-spacing: 0.04em;
-  color: var(--c-muted-slate);
+  color: var(--c-cadetgray);
+}
+
+/* ==========================================================================
+   PHILOSOPHY & MEANING MODAL (The Psychological and Emotional Elements)
+   ========================================================================== */
+.meaning-panel {
+  max-width: 760px;
+}
+
+.meaning-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.meaning-card {
+  padding: 20px 24px;
+  background-color: var(--c-seasalt);
+  border: 1px solid var(--c-platinum);
+}
+
+.meaning-card h3 {
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--c-cadetgray);
+  margin-bottom: 8px;
+}
+
+.meaning-card p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--c-frenchgray);
 }
 
 /* ==========================================================================
@@ -1991,7 +2049,7 @@ body:not(.is-loading) .preloader {
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background-color: rgba(18, 19, 22, 0.45);
+  background-color: rgba(233, 236, 239, 0.6);
   backdrop-filter: blur(6px);
 }
 
@@ -2007,7 +2065,7 @@ body:not(.is-loading) .preloader {
   border: 1px solid var(--c-platinum);
   padding: 36px 40px;
   overflow-y: auto;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 24px 60px rgba(167, 175, 182, 0.15);
   transition: transform 0.4s var(--ease-smooth);
 }
 
@@ -2025,31 +2083,33 @@ body:not(.is-loading) .preloader {
 .modal-eyebrow {
   font-size: 0.65rem;
   letter-spacing: 0.25em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .modal-close-btn {
   font-size: 1.3rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   transition: color 0.25s ease;
 }
 
 .modal-close-btn:hover {
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
 }
 
 .modal-title {
   font-size: 1.15rem;
   letter-spacing: 0.18em;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 8px;
+  color: var(--c-cadetgray);
 }
 
 .modal-subtext {
   font-size: 0.82rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   line-height: 1.6;
   margin-bottom: 24px;
 }
@@ -2077,7 +2137,8 @@ body:not(.is-loading) .preloader {
   font-size: 0.65rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
+  font-weight: 500;
 }
 
 .form-group input,
@@ -2088,7 +2149,7 @@ body:not(.is-loading) .preloader {
   background-color: var(--c-seasalt);
   font-family: inherit;
   font-size: 0.85rem;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   outline: none;
   transition: border-color 0.25s ease;
 }
@@ -2096,7 +2157,7 @@ body:not(.is-loading) .preloader {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
   background-color: var(--c-white);
 }
 
@@ -2112,10 +2173,12 @@ body:not(.is-loading) .preloader {
   padding: 6px 12px;
   border: 1px solid var(--c-platinum);
   background: var(--c-seasalt);
+  color: var(--c-cadetgray);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  transition: all 0.2s ease;
 }
 
 .radio-pill input {
@@ -2124,36 +2187,43 @@ body:not(.is-loading) .preloader {
 
 .radio-pill input:checked + span {
   font-weight: 600;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
+}
+
+.radio-pill:hover {
+  border-color: var(--c-cadetgray);
 }
 
 .btn-form-submit {
   padding: 16px;
-  background-color: var(--c-dark-charcoal);
+  background-color: var(--c-cadetgray);
   color: var(--c-white);
   font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  border: 1px solid var(--c-cadetgray);
+  transition: all 0.3s ease;
   margin-top: 6px;
 }
 
 .btn-form-submit:hover {
-  background-color: #000;
+  background-color: var(--c-frenchgray);
+  border-color: var(--c-frenchgray);
 }
 
 .form-discretion {
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   text-align: center;
 }
 
 .form-msg {
   display: none;
   font-size: 0.75rem;
-  color: #2b7a4b;
+  color: var(--c-cadetgray);
   margin-top: 10px;
 }
 
@@ -2176,14 +2246,14 @@ body:not(.is-loading) .preloader {
 
 .success-check {
   font-size: 2rem;
-  color: #2b7a4b;
+  color: var(--c-cadetgray);
   display: block;
   margin-bottom: 8px;
 }
 
 /* Search Modal Specific */
 .search-input-box {
-  border-bottom: 1px solid var(--c-cadetgray);
+  border-bottom: 1px solid var(--c-platinum);
   padding: 10px 0;
   margin-bottom: 18px;
 }
@@ -2195,8 +2265,12 @@ body:not(.is-loading) .preloader {
   font-family: inherit;
   font-size: 1.1rem;
   letter-spacing: 0.05em;
-  color: var(--c-dark-charcoal);
+  color: var(--c-cadetgray);
   outline: none;
+}
+
+.search-input-box input::placeholder {
+  color: var(--c-frenchgray);
 }
 
 .search-pills-row {
@@ -2212,13 +2286,13 @@ body:not(.is-loading) .preloader {
   text-transform: uppercase;
   padding: 4px 10px;
   border: 1px solid var(--c-platinum);
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   transition: all 0.2s ease;
 }
 
 .search-tag:hover {
-  border-color: var(--c-dark-charcoal);
-  color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
+  color: var(--c-cadetgray);
 }
 
 .search-results-list {
@@ -2242,7 +2316,7 @@ body:not(.is-loading) .preloader {
 
 .search-result-item:hover {
   background-color: var(--c-white);
-  border-color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
 }
 
 .s-item-title {
@@ -2250,12 +2324,13 @@ body:not(.is-loading) .preloader {
   letter-spacing: 0.1em;
   font-weight: 500;
   text-transform: uppercase;
+  color: var(--c-cadetgray);
   display: block;
 }
 
 .s-item-sub {
   font-size: 0.72rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
 }
 
 /* Care Modal Specific */
@@ -2278,18 +2353,20 @@ body:not(.is-loading) .preloader {
 .cc-label {
   font-size: 0.62rem;
   letter-spacing: 0.2em;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .cc-val {
   font-size: 0.85rem;
   font-weight: 500;
+  color: var(--c-cadetgray);
 }
 
 .cc-note {
   font-size: 0.72rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
 }
 
 .care-salons h4 {
@@ -2297,11 +2374,12 @@ body:not(.is-loading) .preloader {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 6px;
+  color: var(--c-cadetgray);
 }
 
 .care-salons p {
   font-size: 0.8rem;
-  color: var(--c-muted-slate);
+  color: var(--c-frenchgray);
 }
 
 /* Country Modal Specific */
@@ -2320,13 +2398,14 @@ body:not(.is-loading) .preloader {
   background-color: var(--c-seasalt);
   font-size: 0.85rem;
   letter-spacing: 0.05em;
+  color: var(--c-cadetgray);
   transition: all 0.25s ease;
 }
 
 .country-opt:hover,
 .country-opt.active {
   background-color: var(--c-white);
-  border-color: var(--c-dark-charcoal);
+  border-color: var(--c-cadetgray);
 }
 
 /* ==========================================================================
@@ -2363,7 +2442,7 @@ body:not(.is-loading) .preloader {
 
 @media (max-width: 768px) {
   .curtain-pagination {
-    display: none; /* Mobile swipe gesture dominates */
+    display: none;
   }
 
   .quiet-ref-tag {
@@ -2379,7 +2458,7 @@ body:not(.is-loading) .preloader {
   }
 
   .two-column-grid {
-    grid-template-columns: 1fr; /* Clean single column stacking on mobile */
+    grid-template-columns: 1fr;
     gap: 32px;
   }
 
