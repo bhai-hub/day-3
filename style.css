@@ -166,11 +166,54 @@ body:not(.is-loading) .preloader {
   z-index: 1000;
   pointer-events: none;
   color: var(--c-cadetgray);
-  transition: color 0.5s ease;
+  transition: color 0.5s ease, background 0.5s ease;
 }
 
 .site-header > * {
   pointer-events: auto;
+}
+
+/* Header Dynamic Theme Adaptation */
+.site-header[data-theme="dark"] {
+  color: var(--c-white);
+}
+
+.site-header[data-theme="dark"] .explore-btn {
+  color: var(--c-white);
+}
+
+.site-header[data-theme="dark"] .nav-underline-bar {
+  background-color: var(--c-white);
+}
+
+.site-header[data-theme="dark"] .site-logo {
+  color: var(--c-white);
+}
+
+.site-header[data-theme="dark"] .logo-sep {
+  color: var(--c-platinum);
+}
+
+.site-header[data-theme="dark"] .header-view-pill {
+  color: var(--c-white);
+  border-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(140, 150, 158, 0.35);
+}
+
+.site-header[data-theme="dark"] .header-view-pill .pill-dot {
+  background-color: var(--c-white);
+}
+
+.site-header[data-theme="dark"] ~ .curtain-pagination .curtain-dot {
+  color: var(--c-platinum);
+}
+
+.site-header[data-theme="dark"] ~ .curtain-pagination .curtain-dot.active {
+  color: var(--c-white);
+}
+
+.site-header[data-theme="dark"] ~ .curtain-pagination .curtain-dot.active::before {
+  background-color: var(--c-white);
 }
 
 /* Left: Single word "Explore" */
@@ -414,7 +457,7 @@ body:not(.is-loading) .preloader {
 
 /* ==========================================================================
    QUIET PALE-GRAY REFERENCE TAG (Page 5 & 6)
-   Strictly pale greys: #F8F9FA, #E9ECEF, #DEE2E6, #A7AFB6
+   Enhanced depth & contrast: crisp white typography on Cadet backdrop
    ========================================================================== */
 .quiet-ref-tag {
   position: absolute;
@@ -425,20 +468,20 @@ body:not(.is-loading) .preloader {
   align-items: center;
   gap: 24px;
   padding: 16px 24px;
-  background-color: rgba(248, 249, 250, 0.94);
+  background-color: rgba(140, 150, 158, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--c-platinum);
-  color: var(--c-cadetgray);
-  box-shadow: 0 10px 30px rgba(167, 175, 182, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--c-white);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
   transition: all 0.35s ease;
   cursor: pointer;
 }
 
 .quiet-ref-tag:hover {
-  background-color: var(--c-white);
+  background-color: rgba(120, 130, 140, 0.98);
   transform: translateY(-2px);
-  border-color: var(--c-cadetgray);
+  border-color: var(--c-white);
 }
 
 .tag-body {
@@ -448,58 +491,76 @@ body:not(.is-loading) .preloader {
 }
 
 .tag-ref-code {
-  font-size: 0.62rem;
+  font-size: 0.65rem;
   letter-spacing: 0.25em;
-  color: var(--c-frenchgray);
+  color: var(--c-platinum);
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .tag-title {
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   letter-spacing: 0.2em;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--c-cadetgray);
+  color: var(--c-white);
 }
 
 .tag-meta {
-  font-size: 0.72rem;
-  color: var(--c-frenchgray);
+  font-size: 0.75rem;
+  color: var(--c-seasalt);
   letter-spacing: 0.05em;
 }
 
 .tag-action-btn {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 600;
   padding: 8px 16px;
-  background: var(--c-cadetgray);
-  color: var(--c-white);
-  border: 1px solid var(--c-cadetgray);
+  background: var(--c-white);
+  color: var(--c-cadetgray);
+  border: 1px solid var(--c-white);
   transition: all 0.3s ease;
 }
 
 .tag-action-btn:hover {
-  background-color: var(--c-frenchgray);
-  border-color: var(--c-frenchgray);
+  background-color: var(--c-seasalt);
   transform: translateX(2px);
 }
 
 /* ==========================================================================
    LOWEST FRAME OF THE WEBSITE (Page 25: Bottega Veneta Luxury Minimal Footer)
+   Architectural Salon Backdrop with Cadet Gray Scrim for 100% Text Legibility
    ========================================================================== */
 .lowest-frame {
-  background-color: var(--c-seasalt);
-  color: var(--c-cadetgray);
+  position: relative;
+  background-color: var(--c-cadetgray);
+  color: var(--c-white);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.salon-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(0.95) brightness(0.85);
+}
+
+.lowest-frame-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(140, 150, 158, 0.88) 0%, rgba(120, 130, 140, 0.94) 100%);
+  backdrop-filter: blur(6px);
+}
+
 .lowest-frame-container {
+  position: relative;
+  z-index: 10;
   width: 100%;
   max-width: 1320px;
   height: 100%;
@@ -514,40 +575,40 @@ body:not(.is-loading) .preloader {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   padding-bottom: 40px;
-  border-bottom: 1px solid var(--c-platinum);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .lowest-col .col-heading {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.25em;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 12px;
-  color: var(--c-cadetgray);
+  color: var(--c-white);
 }
 
 .lowest-col .col-text {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   line-height: 1.7;
-  color: var(--c-frenchgray);
+  color: var(--c-seasalt);
   max-width: 480px;
   margin-bottom: 18px;
 }
 
 .hairline-link-btn {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   letter-spacing: 0.2em;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   padding-bottom: 4px;
-  border-bottom: 1px solid var(--c-platinum);
-  color: var(--c-cadetgray);
+  border-bottom: 1.5px solid var(--c-white);
+  color: var(--c-white);
   transition: all 0.3s ease;
 }
 
 .hairline-link-btn:hover {
-  border-color: var(--c-cadetgray);
-  color: var(--c-cadetgray);
+  opacity: 0.8;
+  transform: translateX(4px);
 }
 
 /* Newsletter Single Hairline Input */
@@ -559,13 +620,13 @@ body:not(.is-loading) .preloader {
 .newsletter-input-group {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--c-platinum);
+  border-bottom: 1.5px solid var(--c-white);
   padding: 8px 0;
   transition: border-color 0.3s ease;
 }
 
 .newsletter-input-group:focus-within {
-  border-color: var(--c-cadetgray);
+  border-color: var(--c-platinum);
 }
 
 .newsletter-input-group input {
@@ -574,19 +635,20 @@ body:not(.is-loading) .preloader {
   border: none;
   outline: none;
   font-family: inherit;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   letter-spacing: 0.05em;
-  color: var(--c-cadetgray);
+  color: var(--c-white);
+  font-weight: 500;
 }
 
 .newsletter-input-group input::placeholder {
-  color: var(--c-frenchgray);
+  color: var(--c-platinum);
 }
 
 .newsletter-submit-btn {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   padding: 0 8px;
-  color: var(--c-cadetgray);
+  color: var(--c-white);
   transition: transform 0.2s ease;
 }
 
@@ -596,10 +658,11 @@ body:not(.is-loading) .preloader {
 
 .newsletter-confirmation {
   display: none;
-  font-size: 0.75rem;
-  color: var(--c-cadetgray);
+  font-size: 0.78rem;
+  color: var(--c-white);
   margin-top: 8px;
   letter-spacing: 0.05em;
+  font-weight: 500;
 }
 
 .newsletter-confirmation.is-visible {
@@ -612,34 +675,36 @@ body:not(.is-loading) .preloader {
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
   padding: 40px 0;
-  border-bottom: 1px solid var(--c-platinum);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .footer-block .block-title {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.22em;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 16px;
-  color: var(--c-cadetgray);
+  color: var(--c-white);
 }
 
 .footer-block .block-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .footer-block .block-list a {
-  font-size: 0.8rem;
-  color: var(--c-frenchgray);
+  font-size: 0.85rem;
+  color: var(--c-seasalt);
   letter-spacing: 0.04em;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
 .footer-block .block-list a:hover {
-  color: var(--c-cadetgray);
+  color: var(--c-white);
+  transform: translateX(3px);
 }
 
 /* Bottom Bar */
@@ -648,8 +713,8 @@ body:not(.is-loading) .preloader {
   align-items: center;
   justify-content: space-between;
   padding-top: 24px;
-  font-size: 0.72rem;
-  color: var(--c-frenchgray);
+  font-size: 0.75rem;
+  color: var(--c-seasalt);
   letter-spacing: 0.08em;
 }
 
@@ -658,26 +723,29 @@ body:not(.is-loading) .preloader {
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  transition: color 0.3s ease;
+  color: var(--c-white);
+  font-weight: 500;
+  transition: opacity 0.3s ease;
 }
 
 .country-selector:hover {
-  color: var(--c-cadetgray);
+  opacity: 0.8;
 }
 
 .back-to-top-btn {
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   letter-spacing: 0.2em;
-  padding: 6px 14px;
-  border: 1px solid var(--c-platinum);
-  color: var(--c-cadetgray);
-  background-color: var(--c-white);
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 1.5px solid var(--c-white);
+  color: var(--c-white);
+  background-color: rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
 }
 
 .back-to-top-btn:hover {
-  border-color: var(--c-cadetgray);
-  background-color: var(--c-antiflash);
+  background-color: var(--c-white);
+  color: var(--c-cadetgray);
 }
 
 /* ==========================================================================
